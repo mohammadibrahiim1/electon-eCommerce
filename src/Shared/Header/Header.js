@@ -45,7 +45,7 @@ const Header = () => {
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    {/* <a href="https://imgbb.com/"><img src="https://i.ibb.co/qxc3SCB/logo-1.png" alt="logo-1" border="0"></a> */}
+    {/* <Link href="https://imgbb.com/"><img src="https://i.ibb.co/qxc3SCB/logo-1.png" alt="logo-1" border="0"></Link> */}
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
       <Link class="navbar-brand" href="#"><img src="https://i.ibb.co/qxc3SCB/logo-1.png" alt="logo" /></Link>
       <form class="d-flex ms-5 ps-5" role="search">
@@ -64,6 +64,55 @@ const Header = () => {
         </li>
       </ul>
     
+    </div>
+  </div>
+</nav>
+      </section>
+      <section>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    {/* <Link class="navbar-brand" href="#">Navbar scroll</Link> */}
+    <Link class=" navbar-brand">
+          <Link class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Brows Categories
+          </Link>
+          <ul class="dropdown-menu">
+            <li><Link class="dropdown-item" href="#">Action</Link></li>
+            <li><Link class="dropdown-item" href="#">Another action</Link></li>
+            <li><hr class="dropdown-divider"/></li>
+            <li><Link class="dropdown-item" href="#">Something else here</Link></li>
+          </ul>
+        </Link>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style={{bsScrollHeight: "100px"}}>
+        <li class="nav-item">
+          <Link class="nav-link active" aria-current="page" href="#">Home</Link>
+        </li>
+        <li class="nav-item">
+          <Link class="nav-link" href="#">Link</Link>
+        </li>
+        <li class="nav-item dropdown">
+          <Link class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Link
+          </Link>
+          <ul class="dropdown-menu">
+            <li><Link class="dropdown-item" href="#">Action</Link></li>
+            <li><Link class="dropdown-item" href="#">Another action</Link></li>
+            <li><hr class="dropdown-divider"/></li>
+            <li><Link class="dropdown-item" href="#">Something else here</Link></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <Link class="nav-link disabled">Link</Link>
+        </li>
+      </ul>
+      {/* <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> */}
     </div>
   </div>
 </nav>
