@@ -35,4 +35,7 @@
 .nav-link small{
   color: white;
 }
+.dropdown-menu{
+  margin-left: 60px;
+}
 

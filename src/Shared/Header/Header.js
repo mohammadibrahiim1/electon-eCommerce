@@ -74,9 +74,9 @@ const Header = () => {
     {/* <Link class="navbar-brand" href="#">Navbar scroll</Link> */}
     <Link class=" navbar-brand">
           <Link class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Brows Categories
+          Browse categories
           </Link>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu ">
             <li><Link class="dropdown-item" href="#">Action</Link></li>
             <li><Link class="dropdown-item" href="#">Another action</Link></li>
             <li><hr class="dropdown-divider"/></li>
@@ -87,14 +87,14 @@ const Header = () => {
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style={{bsScrollHeight: "100px"}}>
+      <ul class="navbar-nav me-auto ps-5 my-2 my-lg-0 navbar-nav-scroll" style={{bsScrollHeight: "100px"}}>
         <li class="nav-item">
-          <Link class="nav-link active" aria-current="page" href="#">Home</Link>
+          <Link class="nav-link pe-5 " aria-current="page" href="#">Home</Link>
         </li>
         <li class="nav-item">
-          <Link class="nav-link" href="#">Link</Link>
+          <Link class="nav-link pe-5" href="#">shop</Link>
         </li>
-        <li class="nav-item dropdown">
+        {/* <li class="nav-item dropdown">
           <Link class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Link
           </Link>
@@ -104,9 +104,15 @@ const Header = () => {
             <li><hr class="dropdown-divider"/></li>
             <li><Link class="dropdown-item" href="#">Something else here</Link></li>
           </ul>
+        </li> */}
+        <li class="nav-item">
+          <Link class="nav-link pe-5 ">Blog</Link>
         </li>
         <li class="nav-item">
-          <Link class="nav-link disabled">Link</Link>
+          <Link class="nav-link pe-5 ">Contact us</Link>
+        </li>
+        <li class="nav-item">
+          <Link class="nav-link pe-5 ">About Us</Link>
         </li>
       </ul>
       {/* <form class="d-flex" role="search">
