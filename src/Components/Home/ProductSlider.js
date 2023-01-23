@@ -8,33 +8,34 @@ const ProductSlider = () => {
   return (
     <div>
       <section className="product-slider-section">
-        <h6>product slider</h6>
+        {/* <h6>product slider</h6> */}
 
-        <div>
-          { allProducts && allProducts.slice(0,3).map((dp) => (
+        <div className="product-slider container ps-4 pe-4">
+          { allProducts && allProducts.slice(6,9).map((dp) => (
             <>
-              <div class="card mb-3" style={{ "max-width": "540px" }}>
+              <div class="card mb-3" style={{ width: "381px",height:"147px" }}>
                 <div class="row g-0">
                   <div class="col-md-4">
                     <img
                       src={dp.thumbnail}
-                      class="img-fluid rounded-start"
+                      class="img-fluid rounded-start mt-4 ms-4"
+                      style={{ width:"154px",height:"94px"}}
                       alt="..."
                     />
                   </div>
                   <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">{dp.title}</h5>
-                      <p class="card-text">
+                    <div class="card-body mt-3">
+                      <h5 class="card-title ms-4">{dp.title}</h5>
+                      {/* <p class="card-text">
                         This is a wider card with supporting text below as a
                         natural lead-in to additional content. This content is a
                         little bit longer.
-                      </p>
-                      <p class="card-text">
+          </p>*/}
+                      <p class="card-text ms-4">
                         <small class="text-muted">
-                          Last updated 3 mins ago
+                          {dp.brand}
                         </small>
-                      </p>
+                      </p> 
                     </div>
                   </div>
                 </div>

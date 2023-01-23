@@ -1,5 +1,6 @@
 import React from "react";
 import "./Home.css";
+import PopularProducts from "./PopularProducts";
 import ProductSlider from "./ProductSlider";
 
 const Home = () => {
@@ -116,6 +117,7 @@ const Home = () => {
       {/* <section className="product-slider"></section> */}
 
       <ProductSlider></ProductSlider>
+      <PopularProducts></PopularProducts>
     </div>
   );
 };
