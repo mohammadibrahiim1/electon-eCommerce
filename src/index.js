@@ -3,14 +3,18 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { AuthProvider } from "./Components/Context/Context";
+import { ProductsProvider } from "./Components/Context/Context";
+// import Context from "./Components/Context/Context";
+// import {ContextProvider} from "./Components/Context/Context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <AuthProvider>
-      <App />
-    </AuthProvider>
+
+<ProductsProvider>
+<App />
+</ProductsProvider>
+  
   </React.StrictMode>
 );
 

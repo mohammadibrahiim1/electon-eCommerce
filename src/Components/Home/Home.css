@@ -35,3 +35,16 @@
 
 }
 
+/* product slider section */
+
+.product-slider-section{
+  width: 1222px;
+  margin: 0 auto;
+  height: 147px;
+}
+
+.product-slider{
+  display: grid;
+  /* grid-template-columns: repeat(3, 1fr); */
+
+}

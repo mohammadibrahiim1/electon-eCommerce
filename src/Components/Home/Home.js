@@ -1,5 +1,6 @@
 import React from "react";
 import "./Home.css";
+import ProductSlider from "./ProductSlider";
 
 const Home = () => {
   // <a href="https://imgbb.com/"><img src="https://i.ibb.co/0JwrvxF/8-1.png" alt="8-1" border="0"></a>
@@ -112,7 +113,9 @@ const Home = () => {
         </div>
       </section>
 
-      <section className="product-slider"></section>
+      {/* <section className="product-slider"></section> */}
+
+      <ProductSlider></ProductSlider>
     </div>
   );
 };
