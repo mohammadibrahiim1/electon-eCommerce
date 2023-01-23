@@ -1,7 +1,7 @@
 .header-section {
   height: 394px;
 }
-.carousel-inner{
+.carousel-inner {
   position: relative;
   left: 190px;
   top: -40px;
@@ -12,27 +12,24 @@
   margin: 0 auto;
   height: 356px;
 }
-.product-slider{
+.product-slider {
   margin-top: 100px;
-
 }
-.shop-button{
-  background-color: #EDA415;
+.shop-button {
+  background-color: #eda415;
   padding: 10px 15px;
   margin-right: 15px;
 }
-.view-button{
-  border: 1px solid #EDA415
-  ;
+.view-button {
+  border: 1px solid #eda415;
   /* background-color: #EDA415; */
   padding: 10px 15px;
 }
-.carousel-item h1{
-  color: #1B5A7D;
+.carousel-item h1 {
+  color: #1b5a7d;
   font-size: 43px;
   font-weight: 700;
   line-height: 64px;
-
 }
 
 /* product slider section */
@@ -43,18 +40,17 @@
   height: 147px;
 } */
 
-.product-slider{
+.product-slider {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   justify-content: space-between;
   align-items: center;
   gap: 12px;
-  margin-top: 150px ;
+  margin-top: 150px;
   margin-bottom: 100px;
-
 }
-.popular-products-title{
-  color: #1B5A7D;
+.popular-products-title {
+  color: #1b5a7d;
   font-weight: 700;
   font-size: 27px;
   margin-top: 100px;
@@ -62,10 +58,29 @@
   left: 240px; */
 }
 
-.popular-products{
- display: grid;
- grid-template-columns: repeat(4,1fr);
- gap: 5px;
+.popular-products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+}
+/* .discount-section{
+  background: url(https://i.ibb.co/581jR6z/pexels-nao-triponez-129208-1-1.png);
+  height: 417px;
+  background-repeat: no-repeat;
+ 
+} */
 
+.discount-info {
+  position: relative;
+  bottom: 250px;
+  left: 850px;
+}
 
+.discount-info h3 {
+  color: #1b5a7d;
+  font-size: 32px;
+  font-weight: 600px;
+}
+.discount-info p small{
+  color: white;
 }
