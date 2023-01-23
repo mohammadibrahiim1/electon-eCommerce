@@ -1,9 +1,14 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ProductContext } from '../Context/Context';
+
+ 
 
 const Blog = () => {
+
+    const ring = useContext(ProductContext)
     return (
         <div>
-            this is blog page
+            this is {ring} page
         </div>
     );
 };
