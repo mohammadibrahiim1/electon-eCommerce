@@ -84,3 +84,19 @@
 .discount-info p small{
   color: white;
 }
+
+/* other section style */
+
+.card-title{
+ font-size: 21px;
+ color: #1b5a7d;
+ font-weight: 600;
+ line-height: 32px;
+}
+
+.card-container{
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+ 
+
+}
