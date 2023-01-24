@@ -105,6 +105,65 @@ const Other = () => {
        </div>
         
       </section>
+
+      <section className="poster-section container">
+
+        <div className="poster-card-container">
+            {/* <a href="https://imgbb.com/"><img src="https://i.ibb.co/HtBKqxS/shield-security.png" alt="shield-security" border="0"></a> */}
+            {/* <a href="https://imgbb.com/"><img src="https://i.ibb.co/Qkc65cD/box-tick.png" alt="box-tick" border="0"></a> */}
+
+
+          {/* card-1 */}
+
+          <div class="card  mb-3" style={{"max-width": "400px"}}>
+  <div class="row g-0">
+    <div class="col-md-3">
+      <img src="https://i.ibb.co/HtBKqxS/shield-security.png" class="img-fluid mt-3 ms-5" alt="..."/>
+    </div>
+    <div class="col-md-9">
+      <div class="card-body ms-3">
+        <h5 class="card-title">Free delivery</h5>
+        <p class="card-text">on order above $50,00</p>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+
+          <div class="card mb-3" style={{"max-width": "400px"}}cd>
+  <div class="row g-0">
+    <div class="col-md-3">
+      <img src="https://i.ibb.co/HtBKqxS/shield-security.png" class="img-fluid mt-3 ms-5" alt="..."/>
+    </div>
+    <div class="col-md-9">
+      <div class="card-body ms-3">
+        <h5 class="card-title">Free delivery</h5>
+        <p class="card-text">on order above $50,00</p>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+
+          <div class="card mb-3" style={{"max-width": "400px"}}>
+  <div class="row g-0">
+    <div class="col-md-3">
+      <img src="https://i.ibb.co/HtBKqxS/shield-security.png" class="img-fluid mt-3 ms-5" alt="..."/>
+    </div>
+    <div class="col-md-9">
+      <div class="card-body ms-3">
+        <h5 class="card-title">Free delivery</h5>
+        <p class="card-text">on order above $50,00</p>
+      </div>
+    </div>
+  </div>
+ 
+</div>
+
+
+            </div>
+           
+      </section>
     </div>
   );
 };
