@@ -156,3 +156,17 @@
   background-color: #e2f4ff;
 
 }
+
+/* latest news section style */
+
+.latest-news{
+  width: 1260px;
+
+}
+.latest-news-title{
+  font-size: 27px;
+  color: #1b5a7d;
+  font-weight: 700;
+  margin-top: 100px;
+
+}

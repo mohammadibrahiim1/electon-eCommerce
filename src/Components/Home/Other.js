@@ -278,6 +278,51 @@ const Other = () => {
           />
         </div>
       </section>
+
+      <section className="container latest-news-container">
+        <h3 className="latest-news-title">Latest News</h3>
+        <div className="latest-news d-flex justify-content-between align-content-center mt-4">
+          <div class="card mb-3" style={{ "max-width": "620px" }}>
+            <div class="row g-0">
+              <div class="col-md-4">
+                <img src="https://i.ibb.co/BgN8gG5/Blog-2-540x490-crop-center-1.png" class="img-fluid rounded-start pt-3 ps-2" alt="..." />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Who avoids a pain that produces?</h5>
+                  <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur. Nec sit enim tellus
+                    faucibus bibendum ullamcorper. Phasellus tristique aenean at
+                    lorem sed scelerisque.
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="card mb-3" style={{ "max-width": "620px" }}>
+            <div class="row g-0">
+              <div class="col-md-4">
+                {/* <a href="https://ibb.co/nDChDBN"><img src="https://i.ibb.co/BgN8gG5/Blog-2-540x490-crop-center-1.png" alt="Blog-2-540x490-crop-center-1" border="0"></a> */}
+                <img src="https://i.ibb.co/BgN8gG5/Blog-2-540x490-crop-center-1.png" class="img-fluid rounded-start pt-3 ps-2" alt="..." />
+              </div>
+              <div class="col-md-8">
+                <div class="card-body">
+                  <h5 class="card-title">Who avoids a pain that produces?</h5>
+                  <p class="card-text">
+                  Lorem ipsum dolor sit amet consectetur. Nec sit enim tellus faucibus bibendum ullamcorper. Phasellus tristique aenean at lorem sed scelerisque.
+                  </p>
+                  <p class="card-text">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 };
