@@ -18,9 +18,9 @@ const Home = () => {
           data-bs-ride="carousel"
         >
           <div class="carousel-inner">
-            <div class="carousel-item active bg-white ps-5 pe-5  pb-3  mt-5">
+            <div class="carousel-item active bg-white   pb-3  mt-5">
               <div class="row">
-                <div class="col-lg-7 d-flex align-items-center">
+                <div class="col-lg-7  ">
                   <div>
                     <h1>
                       Canon <br /> Camera
