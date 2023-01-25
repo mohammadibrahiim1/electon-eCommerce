@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { ProductContext } from '../Context/Context';
 
 const PopularProducts = () => {
@@ -11,12 +11,12 @@ const PopularProducts = () => {
            <section>
          <div>
             <div>
-            <h3 className='popular-products-title container ps-4'>Popular Products</h3>
+            <h3 className='popular-products-title container ps-4 text-center text-sm-center text-md-center text-lg-start'>Popular Products</h3>
             </div>
          
          </div>
 
-         <div className='popular-products mt-5 container m-auto g-5 '>
+         <div className='popular-products mt-5 container m-auto g-5 col-10 col-md-10 col-lg-12 '>
             {
                  allProducts && allProducts.slice(0,8).map( (product) => (
                     <>

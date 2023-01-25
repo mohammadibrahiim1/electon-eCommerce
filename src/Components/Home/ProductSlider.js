@@ -15,15 +15,15 @@ const ProductSlider = () => {
             <>
               <div class="card mb-3" style={{ width: "381px",height:"147px" }}>
                 <div class="row g-0">
-                  <div class="col-md-4">
+                  <div class="col-md-4 col-4 ps-2">
                     <img
                       src={dp.thumbnail}
-                      class="img-fluid rounded-start mt-4 ms-4"
+                      class="img-fluid rounded-start mt-4 ms-md-3"
                       style={{ width:"154px",height:"94px"}}
                       alt="..."
                     />
                   </div>
-                  <div class="col-md-8">
+                  <div class="col-md-8 col-8">
                     <div class="card-body mt-3">
                       <h5 class="card-title ms-4">{dp.title}</h5>
                       {/* <p class="card-text">

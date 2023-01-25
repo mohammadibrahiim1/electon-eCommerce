@@ -10,11 +10,11 @@ const Footer = () => {
     <div>
       <section>
         {/* <!--====== FOOTER ONE PART START ======--> */}
-        <footer class="footer-areLink footer-one">
+        <footer class="footer-areLink footer-one mt-5">
           <div class="footer-widget">
             <div class="">
               <div class="row">
-                <div class="col-xl-4 col-lg-4 col-sm-12 text-center text-lg-start text-md-start text-sm-center">
+                <div class="col-xl-4 col-lg-4 col-sm-12 col-md-4  text-center text-lg-end  text-md-center text-sm-center">
                   <div class="f-about">
                     <div class="footer-logo">
                       <Link to="/">
@@ -29,10 +29,10 @@ const Footer = () => {
                       hoswick , ze2 7zj
                     </p>
                   </div>
-                  <div class="footer-icon-container">
-                    <h5 class="download-title">find us!</h5>
-                    <hr className="w-25 m-auto  pt-2 pb-2" />
-                    <Link to="/">
+                  <div class="">
+                    <h5 class="text-lg-end text-md-center text-sm-center col-lg-8">find us!</h5>
+                  <div className="col-lg-8 ">
+                   <Link to="/">
                       <FaFacebook
                         className="text-secondary-emphasis me-3"
                         style={{ height: "22px", width: "22px" }}
@@ -57,9 +57,10 @@ const Footer = () => {
                         style={{ height: "22px", width: "22px" }}
                       />
                     </Link>
+                   </div>
                   </div>
                 </div>
-                <div class="col-xl-2 col-lg-2 col-sm-12 text-center text-lg-start text-md-start text-sm-center mt-3">
+                <div class="col-xl-2 col-lg-2 col-sm-12 col-md-4 text-center text-lg-start text-md-center text-sm-center mt-3">
                   <div class="footer-link">
                     <h6 class="footer-title">Company</h6>
                     <ul className="list-unstyled text-decoration-none">
@@ -79,9 +80,9 @@ const Footer = () => {
                   </div>
                   {/* <!-- footer link --> */}
                 </div>
-                <div class="col-xl-2 col-lg-3 col-sm-12 text-center text-lg-start text-md-start text-sm-center  ">
+                <div class="col-xl-2 col-lg-3 col-sm-12 col-md-4 text-center text-lg-start text-md-center text-sm-center  ">
                   <div class="footer-link ">
-                    <h6 class="footer-title">Services</h6>
+                    <h6 class="footer-title pt-3">Services</h6>
                     <ul className="list-unstyled">
                       <li>
                         <Link to="/">Products</Link>
@@ -99,10 +100,10 @@ const Footer = () => {
                   </div>
                   {/* <!-- footer link --> */}
                 </div>
-                <div class="col-xl-2 col-lg-3 col-sm-12 text-center text-sm-center text-md-start text-lg-start">
+                <div class="col-xl-2 col-lg-4 col-sm-12 col-md-12 text-center text-sm-center text-md-center text-lg-end">
                   {/* <!-- Start Footer Contact --> */}
                   <div class="">
-                    <h6 class="footer-title mt-4">Help & Suuport</h6>
+                    <h6 class="footer-title pt-5">Help & Suuport</h6>
                     <ul className="list-unstyled">
                       <li>
                         <i class=""></i> Madison Street,
@@ -127,17 +128,13 @@ const Footer = () => {
           <div class="footer-copyright">
             <div class="container">
               <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12 col-md-12 col-sm-12 text-center text-md-center text-lg-center text-sm-center">
                   <div
                     class="
-                  copyright
-                  text-center
-                  d-md-flex
-                  justify-content-between
-                  align-items-center
+                
                   "
                   >
-                    <p class="text">
+                    <p class="text-center">
                       Copyright © 2024 AyroUI. All Rights Reserved
                     </p>
                     <ul class="social">
