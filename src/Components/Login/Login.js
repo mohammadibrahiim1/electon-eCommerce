@@ -7,82 +7,70 @@ import "./Login.css";
 const Login = () => {
   return (
     <div>
-      <section className="login-section">
-        <div className="log-in-title">
-          <h4>LOG IN HERE!</h4>
+      <div className="fs-5">
+          <h4 className="text-center log-in-title">
+          LOG IN HERE!
+          </h4>
         </div>
-        <div className="log-in-section">
-          <div className="form-log-in">
-            <form className="form-container">
-              <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label ">
-                  Email address
-                </label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="exampleInputEmail1"
-                  aria-describedby="emailHelp"
-                />
-              </div>
-              <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  class="form-control"
-                  id="exampleInputPassword1"
-                />
-              </div>
-
-              <button
-                type="submit"
-                class="btn btn-outline-primary w-50 mt-3"
-              >
-                LOG IN
-              </button>
-            </form>
+      <section className="form-section">
+        
+        <form action="submit" className="log-in-form col-lg-6 col-md-7 col-sm-12 col-9">
+          <div className="mt-4">
+            <label htmlFor="email" className="input-label">
+              EMAIL ADDRESS
+            </label>
+            <br />
+            <input type="email" name="email" id="" className="input-field" />
           </div>
-
-          <div className="google-log-in">
-            <div className="log-in-button">
-              <Link to="/">
-                <button>
-                  <span className="me-5">
-                    <FcGoogle style={{ width: "25px", height: "25px" }} />
-                  </span>
-                  Continue With Google{" "}
-                </button>
-              </Link>
-              <Link to="/">
-                <button>
-                  <span className="me-5">
-                    <FaApple style={{ width: "25px", height: "25px" }} />
-                  </span>
-                  Continue With Google{" "}
-                </button>
-              </Link>
-              <Link to="/">
-                <button>
-                  <span className="me-5">
-                    <FaFacebookF style={{ width: "25px", height: "25px" }} />
-                  </span>
-                  Continue With Google{" "}
-                </button>
-              </Link>
-            </div>
+          <div className="mt-4">
+            <label htmlFor="password" className="input-label">
+              PASSWORD
+            </label>
+            <br />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              className="input-field"
+            />
           </div>
+          <div className="mt-4 ms-3">
+            <button className="btn btn-outline-primary">LOG IN</button>
+          </div>
+        </form>
+
+        <div className="mt-5 social-log-in col-lg-6 col-md-7 col-sm-12 col-12">
+          <Link className="btn btn-outline-dark p-2">
+            <span className="me-3">
+              <FcGoogle />
+            </span>{" "}
+            Continue With Google
+          </Link>
+          <Link className="btn btn-outline-dark p-2">
+            <span className="me-3">
+              <FaApple />
+            </span>{" "}
+            Continue With Apple
+          </Link>
+          <Link className="btn btn-outline-dark p-2">
+            <span className="me-3">
+              <FaFacebookF />
+            </span>{" "}
+            Continue With Facebook
+          </Link>
         </div>
-
-       
       </section>
-      <div className="create-account">
-          CANN'T LOG IN?{" "}
+
+      <div>
+        <p className="text-center">
+          DON'T HAVE AN ACCOUNT?{" "}
           <span>
-            <Link className="text-decoration-none" to="/">CREATE AN ACCOUNT</Link>
+            <Link to="" className="text-decoration-none fs-6">
+              CREATE AN ACCOUNT
+            </Link>
           </span>
-        </div>
+        </p>
+      </div>
     </div>
   );
 };
