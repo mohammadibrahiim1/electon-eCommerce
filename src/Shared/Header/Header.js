@@ -43,7 +43,7 @@ const Header = () => {
     <nav class="navbar navbar-expand-lg p-3">
   <div class="container">
     {/* <a href="https://ibb.co/HXbfSC7"><img src="https://i.ibb.co/qxc3SCB/logo-1.png" alt="logo-1" border="0"></a> */}
-    <Link class="navbar-brand" to="#"><img src="https://i.ibb.co/qxc3SCB/logo-1.png" alt="" /></Link>
+    <Link class="navbar-brand" to="/"><img src="https://i.ibb.co/qxc3SCB/logo-1.png" alt="" /></Link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>

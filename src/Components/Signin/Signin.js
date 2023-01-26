@@ -1,20 +1,27 @@
-import React from "react";
+import React from 'react';
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple, FaFacebookF } from "react-icons/fa";
-import "./Login.css";
+import './Signin.css'
 
-const Login = () => {
-  return (
-    <div>
-      <div className="fs-5">
+const Signin = () => {
+    return (
+        <div>
+               <div className="fs-5">
           <h4 className="text-center log-in-title">
-          LOG IN HERE!
+          SIGN IN HERE!
           </h4>
         </div>
       <section className="form-section">
         
         <form action="submit" className="log-in-form col-lg-6 col-md-7 col-sm-12 col-9">
+          <div className="mt-4">
+            <label htmlFor="email" className="input-label">
+              YOUR NAME
+            </label>
+            <br />
+            <input type="text" name="name" id="" className="input-field" />
+          </div>
           <div className="mt-4">
             <label htmlFor="email" className="input-label">
               EMAIL ADDRESS
@@ -63,16 +70,16 @@ const Login = () => {
 
       <div>
         <p className="text-center">
-          DON'T HAVE AN ACCOUNT?{" "}
+          ALREADY HAVE AN ACCOUNT?{" "}
           <span>
-            <Link to="/signin" className="text-decoration-none fs-6">
-              CREATE AN ACCOUNT
+            <Link to="/login" className="text-decoration-none fs-6">
+              LOG IN
             </Link>
           </span>
         </p>
       </div>
-    </div>
-  );
+        </div>
+    );
 };
 
-export default Login;
+export default Signin;
