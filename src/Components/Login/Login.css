@@ -147,8 +147,8 @@
 
 .log-in-title {
   position: absolute;
-  top: 280px;
-  left: 135px;
+  top: 220px;
+  left: 835px;
 }
 
 @media screen and (max-width: 576px) {
@@ -161,6 +161,13 @@
     margin: 0 auto;
     margin-top: 99px;
     margin-bottom: 99px;
+  }
+
+  .log-in-title {
+    position: absolute;
+    top: 270px;
+    left: 130px;
+  
   }
 
   .social-log-in {
@@ -197,6 +204,12 @@
     margin-bottom: 99px;
   }
 
+  .log-in-title {
+    position: absolute;
+    top: 220px;
+    left: 330px;
+  
+  }
   .social-log-in {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
