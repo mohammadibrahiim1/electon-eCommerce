@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; 
   padding: 15px 60px;
 }
 
@@ -37,5 +37,25 @@
 }
 .dropdown-menu{
   margin-left: 60px;
+}
+
+@media screen and (max-width:576px) {
+  
+.header-frame-1 {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-frame-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center; 
+  gap: 20px;
+  /* padding: 15px 60px; */
+}
 }
 
