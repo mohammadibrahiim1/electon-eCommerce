@@ -55,24 +55,27 @@ const Header = () => {
 
       <ul class="navbar-nav m-auto mb-2 ms-sm-5 mt-sm-3  mb-lg-0">
         <li class="nav-item">
-          <Link class="nav-link me-4" aria-current="page" to="#">Home</Link>
+          <Link class="nav-link me-4" aria-current="page" to="/home">Home</Link>
         </li>
         <li class="nav-item">
-          <Link class="nav-link me-4" to="#">Shop</Link>
+          <Link class="nav-link me-4" to="/shop">Shop</Link>
         </li>
         <li class="nav-item">
-          <Link class="nav-link me-4" to="#">Contact </Link>
+          <Link class="nav-link me-4" to="/contact">Contact </Link>
         </li>
         <li class="nav-item">
-          <Link class="nav-link me-4" to="#">About Us</Link>
+          <Link class="nav-link me-4" to="/about">About Us</Link>
         </li>
       
       </ul>
 
       <div >
         <ul className=" navbar-nav m-auto mb-2 ms-sm-5 mt-sm-3 mb-lg-0">
+        {/* <li class="nav-item">
+          <Link class="nav-link" to="#"> <span className="me-1"><FaUser/></span>Sign in</Link>
+        </li> */}
         <li class="nav-item">
-          <Link class="nav-link" to="#"> <span className="me-1"><FaUser/></span> Sign in</Link>
+          <Link class="nav-link" to="/login"> <span className="me-1"><FaUser/></span>Log in</Link>
         </li>
         <li class="nav-item">
           <Link class="nav-link " to="#"> <span className="me-1"><FaShoppingCart/></span> Cart</Link>

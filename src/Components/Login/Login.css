@@ -1,0 +1,55 @@
+.login-section {
+  position: relative;
+  height: 847px;
+  left: 0%;
+  right: 0%;
+  top: 102px;
+}
+.log-in-section {
+  position: relative;
+  height: 430px;
+  top: 208px;
+  width: 50%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-evenly;
+  align-items: center;
+}
+.log-in-title {
+  position: relative;
+  top: 29%;
+  left: 42%;
+}
+
+.form-control {
+  border-top: 0px;
+  border-right: 0px;
+  border-left: 0px;
+  border-radius: 0px;
+}
+
+.form-control:focus {
+  border-color: none;
+  border-color: rgb(167, 166, 166);
+  outline: 0;
+  box-shadow: none;
+}
+.log-in-button button {
+  width: 300px;
+  padding: 15px;
+  border: 1px solid #000000;
+  margin-right: 15px;
+  background-color: #ffffff;
+}
+
+.log-in-button {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 12px;
+}
+
+.create-accoutn {
+  position: relative;
+  left: 40%;
+}

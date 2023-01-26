@@ -1,14 +1,7 @@
-import React from 'react';
-// import { ProductContext } from '../Context/Context';
+import React from "react";
 
 const Shop = () => {
-    // const ring = useContext(ProductContext);
-    return (
-        <div>
-            {/* this is {ring} page  */}
-            this is shop page
-        </div>
-    );
+  return <div>this is shop page</div>;
 };
 
 export default Shop;
