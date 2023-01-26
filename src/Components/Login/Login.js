@@ -80,7 +80,7 @@ const Login = () => {
       <div className="create-account">
           CANN'T LOG IN?{" "}
           <span>
-            <Link to="/">CREATE AN ACCOUNT</Link>
+            <Link className="text-decoration-none" to="/">CREATE AN ACCOUNT</Link>
           </span>
         </div>
     </div>
