@@ -77,7 +77,7 @@ const Login = () => {
 
        
       </section>
-      <div className="create-accoutn">
+      <div className="create-account">
           CANN'T LOG IN?{" "}
           <span>
             <Link to="/">CREATE AN ACCOUNT</Link>
