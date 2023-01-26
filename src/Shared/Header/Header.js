@@ -21,9 +21,9 @@ const Header = () => {
               <small>
                 <FaMapMarkerAlt />
               </small>
-              <Link to="/">
+              <Link to="/" className="text-decoration-none">
                 {" "}
-                <small>Our store</small>
+                <small >Our store</small>
               </Link>
             </div>
             <div>
@@ -31,7 +31,7 @@ const Header = () => {
                 {" "}
                 <FaCarSide />
               </small>
-              <Link to="/">
+              <Link to="/" className="text-decoration-none">
                 {" "}
                 <small>Track your order</small>
               </Link>
