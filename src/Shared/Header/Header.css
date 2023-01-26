@@ -32,8 +32,9 @@
   width: 438px;
   height: 42px;
 }
-.nav-link small{
+.nav-link{
   color: white;
+  /* margin-right: 30px; */
 }
 .dropdown-menu{
   margin-left: 60px;

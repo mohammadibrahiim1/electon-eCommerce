@@ -39,90 +39,55 @@ const Header = () => {
           </div>
         </div>
       </section>
-      <section>
-      <nav class="navbar navbar-expand-lg">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+    <section className="">
+    <nav class="navbar navbar-expand-lg p-3">
+  <div class="container">
+    {/* <a href="https://ibb.co/HXbfSC7"><img src="https://i.ibb.co/qxc3SCB/logo-1.png" alt="logo-1" border="0"></a> */}
+    <Link class="navbar-brand" to="#"><img src="https://i.ibb.co/qxc3SCB/logo-1.png" alt="" /></Link>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    {/* <Link to="https://imgbb.com/"><img src="https://i.ibb.co/qxc3SCB/logo-1.png" alt="logo-1" border="0"></Link> */}
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-      <Link class="navbar-brand" to="#"><img src="https://i.ibb.co/qxc3SCB/logo-1.png" alt="logo" /></Link>
-      <form class="d-flex ms-5 ps-5" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <form class="d-flex ms-lg-5 mt-md-3 mt-3 ms-md-5 " role="search">
+        <input class="form-control me-2 w-75" type="search" placeholder="Search" aria-label="Search"/>
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-      <ul class="navbar-nav ms-auto mb-2 gap-5 mb-lg-0">
+
+      <ul class="navbar-nav m-auto mb-2 ms-sm-5 mt-sm-3  mb-lg-0">
         <li class="nav-item">
-          <Link class="nav-link" aria-current="page" to="#"> <small>< FaUser style={{width:"18px", height:"18px"}}/></small> <small>sign in</small></Link>
+          <Link class="nav-link me-4" aria-current="page" to="#">Home</Link>
         </li>
         <li class="nav-item">
-          <Link class="nav-link" to="#"> <small> < FaHeart style={{width:"18px", height:"18px"}}/> </small> <small>wishlist</small></Link>
+          <Link class="nav-link me-4" to="#">Shop</Link>
         </li>
         <li class="nav-item">
-          <Link class="nav-link "> <small> < FaShoppingCart style={{width:"18px", height:"18px"}}/>  </small> <small>cart</small></Link>
+          <Link class="nav-link me-4" to="#">Contact </Link>
         </li>
+        <li class="nav-item">
+          <Link class="nav-link me-4" to="#">About Us</Link>
+        </li>
+      
       </ul>
-    
+
+      <div >
+        <ul className=" navbar-nav m-auto mb-2 ms-sm-5 mt-sm-3 mb-lg-0">
+        <li class="nav-item">
+          <Link class="nav-link" to="#"> <span className="me-1"><FaUser/></span> Sign in</Link>
+        </li>
+        <li class="nav-item">
+          <Link class="nav-link " to="#"> <span className="me-1"><FaShoppingCart/></span> Cart</Link>
+        </li>
+        <li class="nav-item">
+          <Link class="nav-link" to="#">  <span className="me-1"><FaHeart/></span> wish list</Link>
+        </li>
+        </ul>
+      </div>
+     
+       
     </div>
   </div>
 </nav>
-      </section>
-      <section>
-      <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    {/* <Link class="navbar-brand" to="#">Navbar scroll</Link> */}
-    <Link class=" navbar-brand">
-          <Link class="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Browse categories
-          </Link>
-          <ul class="dropdown-menu ">
-            <li><Link class="dropdown-item" to="#">Action</Link></li>
-            <li><Link class="dropdown-item" to="#">Another action</Link></li>
-            <li><hr class="dropdown-divider"/></li>
-            <li><Link class="dropdown-item" to="#">Something else here</Link></li>
-          </ul>
-        </Link>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarScroll">
-      <ul class="navbar-nav me-auto ps-5 my-2 my-lg-0 navbar-nav-scroll" style={{bsScrollHeight: "100px"}}>
-        <li class="nav-item">
-          <Link class="nav-link pe-5 " aria-current="page" to="/home">Home</Link>
-        </li>
-        <li class="nav-item">
-          <Link class="nav-link pe-5" to="/shop">shop</Link>
-        </li>
-        {/* <li class="nav-item dropdown">
-          <Link class="nav-link dropdown-toggle" to="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Link
-          </Link>
-          <ul class="dropdown-menu">
-            <li><Link class="dropdown-item" to="#">Action</Link></li>
-            <li><Link class="dropdown-item" to="#">Another action</Link></li>
-            <li><hr class="dropdown-divider"/></li>
-            <li><Link class="dropdown-item" to="#">Something else here</Link></li>
-          </ul>
-        </li> */}
-        <li class="nav-item">
-          <Link class="nav-link pe-5 " to="/blog">Blog</Link>
-        </li>
-        <li class="nav-item">
-          <Link class="nav-link pe-5" to="/contactus" >Contact us</Link>
-        </li>
-        <li class="nav-item">
-          <Link class="nav-link pe-5 " to="/aboutus">About Us</Link>
-        </li>
-      </ul>
-      {/* <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form> */}
-    </div>
-  </div>
-</nav>
-      </section>
+    </section>
     
     </div>
   );
