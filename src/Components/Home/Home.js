@@ -1,5 +1,5 @@
 import React from "react";
-import Discount from "./Discount";
+// import Discount from "./Discount";
 import "./Home.css";
 import Other from "./Other";
 import PopularProducts from "./PopularProducts";
@@ -120,7 +120,7 @@ const Home = () => {
 
       <ProductSlider></ProductSlider>
       <PopularProducts></PopularProducts>
-      <Discount></Discount>
+      {/* <Discount></Discount> */}
       <Other></Other>
 
     </div>

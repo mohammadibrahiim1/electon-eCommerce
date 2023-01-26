@@ -6,11 +6,11 @@ import React from 'react';
 const Discount = () => {
     return (
         <div>
-            <section className='discount-section container mt-5 pt-5'>
+            <section className='discount-section mt-5 pt-5'>
 
 
-                <div>
-                    <img src="https://i.ibb.co/581jR6z/pexels-nao-triponez-129208-1-1.png" style={{height:"400px"}} alt="" />
+                <div >
+                    <img src="https://i.ibb.co/581jR6z/pexels-nao-triponez-129208-1-1.png" style={{height:"400px"}} alt=""  className='discount-bg-img'/>
                 </div>
                 <div className='discount-info'>
                     <h3 className='discount-title'>Sale up to 50% off</h3>

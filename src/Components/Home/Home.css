@@ -70,6 +70,11 @@
  
 } */
 
+.discount-section {
+  position: relative;
+  left: 310px;
+}
+
 .discount-info {
   position: relative;
   bottom: 250px;
@@ -160,6 +165,7 @@
 
 .latest-news {
   width: 1260px;
+  /* margin: 0 auto; */
 }
 .latest-news-title {
   font-size: 27px;
@@ -172,6 +178,25 @@
   .card {
     width: 360px;
     /* margin: 0 auto; */
+  }
+  .card-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  .discount-section {
+    position: relative;
+    left: 0px;
+  }
+
+  .discount-info {
+    position: relative;
+    bottom: 250px;
+    left: 50px;
+  }
+  .discount-bg-img {
+    width: 0%;
+    margin: 0 auto;
   }
   .carousel-inner {
     position: relative;
@@ -231,6 +256,19 @@
   .carousel-img img {
     margin-top: 25px;
   }
+  .display-card {
+    position: relative;
+    top: -90px;
+    left: 15px;
+    /* border: 1px solid gray; */
+  }
+  .display-img {
+    position: relative;
+    left: 50px;
+    width: 250px;
+
+    /* border: 1px solid gray; */
+  }
 }
 
 @media only screen and (max-width: 992px) and (min-width: 577px) {
@@ -258,6 +296,20 @@
     gap: 12px;
     margin-top: 450px;
     margin-bottom: 100px;
+  }
+
+  .display-card {
+    position: relative;
+    /* top: -90px; */
+    left: 15px;
+    /* border: 1px solid gray; */
+  }
+  .display-img {
+    position: relative;
+    /* left: 50px; */
+    width: 400px;
+
+    /* border: 1px solid gray; */
   }
 
   .brand-container {
