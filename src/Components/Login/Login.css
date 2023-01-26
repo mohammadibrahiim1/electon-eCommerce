@@ -27,6 +27,7 @@
   border-right: 0px;
   border-left: 0px;
   border-radius: 0px;
+ 
 }
 
 .form-control:focus {
@@ -55,4 +56,29 @@
   bottom: 150px;
 
   
+}
+
+
+@media screen and (max-width:576px) {
+    .create-account {
+        position: absolute;
+        left: 12%;
+        bottom: -100px;
+      
+        
+      }
+
+      .log-in-section {
+        position: relative;
+        height: 430px;
+        top: 90px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 50%;
+        margin: 0 auto;
+      }
+
+    
 }

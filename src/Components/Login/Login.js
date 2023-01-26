@@ -13,9 +13,9 @@ const Login = () => {
         </div>
         <div className="log-in-section">
           <div className="form-log-in">
-            <form>
+            <form className="form-container">
               <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">
+                <label for="exampleInputEmail1" class="form-label ">
                   Email address
                 </label>
                 <input
@@ -38,7 +38,7 @@ const Login = () => {
 
               <button
                 type="submit"
-                class="btn btn-outline-primary w-75 mt-3 m-auto"
+                class="btn btn-outline-primary w-50 mt-3"
               >
                 LOG IN
               </button>
