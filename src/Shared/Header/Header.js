@@ -168,7 +168,9 @@ const Header = () => {
           </div>
           <div>
             <small className="pe-3 text-white"> {user?.displayName}</small>
-            <img className="userImg" src={user?.photoURL} alt="" srcset="" />
+           {
+            user?. email ?  <img className="userImg" src={user?.photoURL} alt="" srcset="" /> : ''
+           }
           </div>
         </nav>
       </section>
