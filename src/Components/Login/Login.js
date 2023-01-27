@@ -1,20 +1,47 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { FaApple, FaFacebookF } from "react-icons/fa";
 import "./Login.css";
+import { ProductContext } from "../Context/Context";
 
 const Login = () => {
+  const [error, setError] = useState("");
+  const { signIn } = useContext(ProductContext);
+  const navigate = useNavigate();
+
+  const handleLogIn = (event) => {
+    event.preventDefault();
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    console.log(email, password);
+
+    signIn(email, password)
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        navigate("/");
+        form.reset();
+        setError("");
+      })
+      .catch((error) => {
+        setError(error.message);
+        console.error(error);
+      });
+  };
+
   return (
     <div>
       <div className="fs-5">
-          <h4 className="text-center log-in-title">
-          LOG IN HERE!
-          </h4>
-        </div>
+        <h4 className="text-center log-in-title">LOG IN HERE!</h4>
+      </div>
       <section className="form-section">
-        
-        <form action="submit" className="log-in-form col-lg-6 col-md-7 col-sm-12 col-9">
+        <form
+          onSubmit={handleLogIn}
+          action="submit"
+          className="log-in-form col-lg-6 col-md-7 col-sm-12 col-9"
+        >
           <div className="mt-4">
             <label htmlFor="email" className="input-label">
               EMAIL ADDRESS
@@ -33,6 +60,9 @@ const Login = () => {
               id="password"
               className="input-field"
             />
+          </div>
+          <div className="pt-3 text-danger">
+            {error}
           </div>
           <div className="mt-4 ms-3">
             <button className="btn btn-outline-primary">LOG IN</button>
