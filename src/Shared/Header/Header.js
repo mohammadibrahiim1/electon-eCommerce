@@ -169,7 +169,7 @@ const Header = () => {
           <div>
             <small className="pe-3 text-white"> {user?.displayName}</small>
            {
-            user?. email ?  <img className="userImg" src={user?.photoURL} alt="" srcset="" /> : ''
+            user?.email ? <img className="userImg" src={user?.photoURL} alt="" srcset="" /> : ''
            }
           </div>
         </nav>

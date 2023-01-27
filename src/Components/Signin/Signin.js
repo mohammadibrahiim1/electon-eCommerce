@@ -9,7 +9,7 @@ const Signin = () => {
   const [error, setError]=useState();
   const navigate = useNavigate();
 
-  const { createUser,updateUserProfile} = useContext(ProductContext);
+  const { createUser,updateUserProfile,signInWithApple ,signInWithGoogle} = useContext(ProductContext);
 
   const handleSignIn =(event)=>{
  event.preventDefault();
@@ -33,6 +33,31 @@ createUser(email, password)
   setError(error.message);
 });
 
+  };
+
+  const handleGoogleSignIn = ()=> {
+    signInWithGoogle()
+    .then((result)=> {
+      const user = result.user;
+      console.log(user)
+      navigate('/home')
+    })
+    .catch((error)=> {
+      console.error(error)
+      setError(error.message)
+    })
+  };
+  const handleAppleSignIn = ()=> {
+    signInWithApple()
+    .then((result)=> {
+      const user = result.user;
+      console.log(user)
+      navigate('/home')
+    })
+    .catch((error)=> {
+      console.error(error)
+      setError(error.message)
+    })
   };
 
   const handleUserProfile = (name,photoURL)=> {
@@ -99,13 +124,13 @@ createUser(email, password)
         </form>
 
         <div className="mt-5 social-log-in col-lg-6 col-md-7 col-sm-12 col-12">
-          <Link className="btn btn-outline-dark p-2">
+          <Link className="btn btn-outline-dark p-2" onClick={handleGoogleSignIn}>
             <span className="me-3">
               <FcGoogle />
             </span>{" "}
             Continue With Google
           </Link>
-          <Link className="btn btn-outline-dark p-2">
+          <Link className="btn btn-outline-dark p-2" onClick={handleAppleSignIn}>
             <span className="me-3">
               <FaApple />
             </span>{" "}
