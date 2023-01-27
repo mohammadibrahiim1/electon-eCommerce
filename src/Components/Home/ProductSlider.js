@@ -1,17 +1,28 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // import context from 'react-bootstrap/esm/AccordionContext';
-import { ProductContext } from "../Context/Context";
+// import { ProductContext } from "../Context/Context";
 
 const ProductSlider = () => {
-  const allProducts = useContext(ProductContext);
-  console.log(allProducts);
+  const [allProducts, setAllProducts]= useState([])
+  // const allProducts = useContext(ProductContext);
+  // console.log(allProducts);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/allproducts")
+      .then((res) => res.json())
+      .then((data) => {
+        // console.log(data);
+        setAllProducts(data);
+      });
+
+  }, []);
   return (
     <div>
       <section className="product-slider-section">
         {/* <h6>product slider</h6> */}
 
         <div className="product-slider container ps-4 pe-4">
-          { allProducts && allProducts.slice(6,9).map((dp) => (
+          {allProducts &&  allProducts.slice(6,9).map((dp) => (
             <>
               <div class="card mb-3" style={{ width: "381px",height:"147px" }}>
                 <div class="row g-0">
