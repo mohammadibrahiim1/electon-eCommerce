@@ -40,6 +40,13 @@
   margin-left: 60px;
 }
 
+.userImg{
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  margin-right: 80px;
+}
+
 @media screen and (max-width:576px) {
   
 .header-frame-1 {
