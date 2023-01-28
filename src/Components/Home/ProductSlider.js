@@ -8,7 +8,7 @@ const ProductSlider = () => {
   // console.log(allProducts);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allproducts")
+    fetch("https://electon-e-commerce-server.vercel.app/allproducts")
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

@@ -7,7 +7,7 @@ const Shop = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allproducts")
+    fetch("https://electon-e-commerce-server.vercel.app/allproducts")
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
@@ -76,7 +76,7 @@ const Shop = () => {
               </>
             ))} */}
           </div>
-          <div className="display-all-products col-10">
+          <div className="display-all-products w-75 col-10">
             {products.slice(0, 12).map((product) => (
               <DisplayProducts
                 product={product}
