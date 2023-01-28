@@ -6,10 +6,9 @@ import {
   updateProfile,
   onAuthStateChanged,
   signOut,
-  
   GoogleAuthProvider,
   signInWithPopup,
-  OAuthProvider,
+  FacebookAuthProvider,
 } from "firebase/auth";
 import app from "../../firebase/firebase.config";
 
@@ -21,7 +20,7 @@ export const ProductsProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const googleProvider = new GoogleAuthProvider();
-  const appleProvider = new OAuthProvider('apple.com');
+  const facebookProvider = new FacebookAuthProvider();
 
   const updateUserProfile = (profile) => {
     return updateProfile(auth.currentUser, profile);
@@ -44,18 +43,16 @@ export const ProductsProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-
-
   const logOut = () => {
     return signOut(auth);
   };
 
-  const  signInWithGoogle =()=>{
-    return signInWithPopup(auth,googleProvider)
- }
-  const  signInWithApple =()=>{
-    return signInWithPopup(auth,appleProvider)
- }
+  const signInWithGoogle = () => {
+    return signInWithPopup(auth, googleProvider);
+  };
+  const signInWithFacebook = () => {
+    return signInWithPopup(auth, facebookProvider);
+  };
 
   const authInfo = {
     createUser,
@@ -65,7 +62,7 @@ export const ProductsProvider = ({ children }) => {
     user,
     updateUserProfile,
     signInWithGoogle,
-    signInWithApple,
+    signInWithFacebook,
   };
   return (
     <ProductContext.Provider value={authInfo}>

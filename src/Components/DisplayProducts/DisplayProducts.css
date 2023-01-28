@@ -1,0 +1,19 @@
+.display-all-products{
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 12px;
+   justify-content: center;
+   align-items: center;
+   margin-top: 100px;
+  
+}
+
+.category-container li{
+    list-style-type: none;
+    padding-top: 15px;
+}
+
+.product-category{
+    margin-top: 100px;
+
+}

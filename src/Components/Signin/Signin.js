@@ -9,7 +9,7 @@ const Signin = () => {
   const [error, setError]=useState();
   const navigate = useNavigate();
 
-  const { createUser,updateUserProfile,signInWithApple ,signInWithGoogle} = useContext(ProductContext);
+  const { createUser,updateUserProfile,signInWithFacebook,signInWithGoogle} = useContext(ProductContext);
 
   const handleSignIn =(event)=>{
  event.preventDefault();
@@ -47,18 +47,19 @@ createUser(email, password)
       setError(error.message)
     })
   };
-  const handleAppleSignIn = ()=> {
-    signInWithApple()
-    .then((result)=> {
-      const user = result.user;
-      console.log(user)
-      navigate('/home')
-    })
-    .catch((error)=> {
-      console.error(error)
-      setError(error.message)
-    })
-  };
+  // const handleFacebookSignIn = ()=> {
+  //   signInWithFacebook()
+  //   .then((result) =>{
+  //     const user = result.user;
+  //     console.log(user);
+  //     navigate('/home')
+  //   })
+  //   .catch((error) => {
+  //     console.error(error);
+  //     setError(error)
+  //   })
+   
+  // };
 
   const handleUserProfile = (name,photoURL)=> {
     const profile = {
@@ -130,13 +131,15 @@ createUser(email, password)
             </span>{" "}
             Continue With Google
           </Link>
-          <Link className="btn btn-outline-dark p-2" onClick={handleAppleSignIn}>
+          <Link className="btn btn-outline-dark p-2">
             <span className="me-3">
               <FaApple />
             </span>{" "}
             Continue With Apple
           </Link>
-          <Link className="btn btn-outline-dark p-2">
+          <Link className="btn btn-outline-dark p-2"
+          //  onClick={handleFacebookSignIn}
+           >
             <span className="me-3">
               <FaFacebookF />
             </span>{" "}
