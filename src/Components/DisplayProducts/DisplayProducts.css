@@ -13,14 +13,13 @@
     margin:0 auto;
 }
 
-/* .card-container Link{
- text-decoration: none;
-} */
+
 
 .category-container li{
     list-style-type: none;
     padding-top: 15px;
     color: #003F62;
+    cursor: pointer;
 }
 
 .product-category{
