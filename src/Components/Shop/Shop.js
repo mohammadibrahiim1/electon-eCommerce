@@ -35,8 +35,8 @@ const Shop = () => {
   return (
     <div>
       <section>
-        <div className="products-container row container m-auto">
-          <div className="product-category col-3">
+        <div className="products-container row">
+          <div className="product-category col-2">
             <ul className="category-container">
               <li onClick={allCategories}>All Categories</li>
               <li onClick={() => filterProducts("smartphones")}>
@@ -54,20 +54,30 @@ const Shop = () => {
               <li>Home-decoration</li>
               <li>Fragrances</li> */}
             </ul>
+            {/* <hr className=" w-75 m-auto" /> */}
+
+            {/* <h5 className="text-start ms-5 pt-5">Brand</h5> */}
+
+            {/* <ul className="category-container">
+              <li>Apple</li>
+              <li>Apple</li>
+              <li>Apple</li>
+              <li>Apple</li>
+              <li>Apple</li>
+            </ul> */}
+
             {/* {products.map((product) => (
               <>
                 <div>
-                  <ul>
-                    <li>
-                      {product.category}
-                    </li>
+                  <ul >
+                    <li>{product.brand}</li>
                   </ul>
                 </div>
               </>
             ))} */}
           </div>
-          <div className="display-all-products col-9">
-            {products.map((product) => (
+          <div className="display-all-products col-10">
+            {products.slice(0, 12).map((product) => (
               <DisplayProducts
                 product={product}
                 key={product._id}
