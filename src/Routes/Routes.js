@@ -30,7 +30,7 @@ export const router = createBrowserRouter([
       {
         path: "/productdetails/:id",
         element: <ProductsDetails></ProductsDetails>,
-        loader:({params})=> fetch(`http://localhost:5000/productdetails/${params.id}`),
+        loader:({params})=> fetch(`https://electon-e-commerce-server.vercel.app/productdetails/${params.id}`),
       },
       {
         path: "/cart",
