@@ -134,7 +134,7 @@ const Header = () => {
                   )}
 
                   <li class="nav-item">
-                    <Link class="nav-link " to="#">
+                    <Link class="nav-link " to="/cart">
                       {" "}
                       <span className="me-1">
                         <FaShoppingCart />
