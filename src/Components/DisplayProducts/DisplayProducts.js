@@ -4,11 +4,11 @@ import "./DisplayProducts.css";
 
 const DisplayProducts = ({ product }) => {
   console.log(product);
-  const { title, price, rating, thumbnail } = product;
+  const { title, price, rating, thumbnail,_id } = product;
   return (
     <div>
       <div class="col">
-        <Link to="/" class="card text-decoration-none" style={{ width: "308px", height: "313px" }}>
+        <Link to={`/productdetails/${_id}`} class="card text-decoration-none" style={{ width: "308px", height: "313px" }}>
           <img
             src={thumbnail}
             class="card-img-top m-auto mt-2"

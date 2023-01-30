@@ -4,6 +4,7 @@ import Cart from "../Components/Cart/Cart";
 import ContactUs from "../Components/ContactUs/ContactUs";
 import Home from "../Components/Home/Home";
 import Login from "../Components/Login/Login";
+import ProductsDetails from "../Components/ProductsDetails/ProductsDetails";
 import Shop from "../Components/Shop/Shop";
 import Signin from "../Components/Signin/Signin";
 import Root from "../Root/Root";
@@ -21,13 +22,15 @@ export const router = createBrowserRouter([
         path: "/home",
         element: <Home></Home>,
       },
-      // {
-      //   path:'/blog',
-      //   element:<Blog></Blog>
-      // },
+    
       {
         path: "/shop",
         element: <Shop></Shop>,
+      },
+      {
+        path: "/productdetails/:id",
+        element: <ProductsDetails></ProductsDetails>,
+        loader:({params})=> fetch(`http://localhost:5000/productdetails/${params.id}`),
       },
       {
         path: "/cart",
