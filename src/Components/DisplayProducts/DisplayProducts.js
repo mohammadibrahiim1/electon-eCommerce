@@ -1,9 +1,12 @@
 import React from "react";
 // import { Link } from "react-router-dom";
 import "./DisplayProducts.css";
+import { Link, useLoaderData } from "react-router-dom";
 
 const DisplayProducts = ({ product }) => {
-  console.log(product);
+  // const productsDetails = useLoaderData();
+  // console.log(productsDetails);
+  // console.log(product);
   const { title, price, rating, thumbnail, description, _id } = product;
   return (
     <div>
@@ -29,7 +32,14 @@ const DisplayProducts = ({ product }) => {
           </h2>
           <p>{description.slice(0, 35)}...</p>
           <div className="card-actions justify-end">
-            <div className="badge badge-outline">{rating}</div>
+            {/* <button className="btn btn-primary">details</button> */}
+            <Link
+              className="badge badge-outline"
+              to={`/productsDetails/${_id}`}
+            >
+              Details
+            </Link>
+            <div className="badge badge-outline">rating:{rating}</div>
             <div className="badge badge-outline">${price}</div>
           </div>
         </div>
