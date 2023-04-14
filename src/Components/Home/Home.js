@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 // import Discount from "./Discount";
 import "./Home.css";
 import Other from "./Other";
@@ -6,19 +6,28 @@ import PopularProducts from "./PopularProducts";
 import ProductSlider from "./ProductSlider";
 
 const Home = () => {
-  // <a href="https://imgbb.com/"><img src="https://i.ibb.co/0JwrvxF/8-1.png" alt="8-1" border="0"></a>
-  // <a href="https://imgbb.com/"><img src="https://i.ibb.co/xMFvbvb/Frame-29.png" alt="Frame-29" border="0"></a>
-  // <a href="https://imgbb.com/"><img src="https://i.ibb.co/LQ7TPqC/Frame-29-3.png" alt="Frame-29-3" border="0"></a>
+  const [airline, setAirline] = useState();
+  console.log(airline);
+
+  useEffect(() => {
+    fetch("alirline.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setAirline(data);
+        console.log(data);
+      });
+  }, []);
   return (
     <div>
       <section class=" header-section mt-5">
+        {/* {airline.length} */}
         <div
           id="carouselExampleControls"
           class="carousel slide "
           data-bs-ride="carousel"
         >
           <div class="carousel-inner">
-            <div class="carousel-item active bg-white   pb-3  mt-5">
+            <div class="carousel-item active bg-white  pb-3  mt-5">
               <div class="row">
                 <div class="col-lg-7  ">
                   <div>
@@ -122,7 +131,6 @@ const Home = () => {
       <PopularProducts></PopularProducts>
       {/* <Discount></Discount> */}
       <Other></Other>
-
     </div>
   );
 };

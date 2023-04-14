@@ -1,42 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext } from "react";
 // import { useLoaderData } from "react-router-dom";
-import DisplayProducts from "../DisplayProducts/DisplayProducts";
+import DisplayProducts from "../../Components/DisplayProducts/DisplayProducts";
+import { ApiContext } from "../../Components/DataContext/DataContext";
+import "./Shop.css";
 
 const Shop = () => {
-  const [allProducts, setAllProducts] = useState([]);
-  const [products, setProducts] = useState([]);
+  const { products, allCategories, filterProducts } = useContext(ApiContext);
+  // const [allProducts, setAllProducts] = useState([]);
+  // const [products, setProducts] = useState([]);
 
-  useEffect(() => {
-    fetch("https://electon-e-commerce-server.vercel.app/allproducts")
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setProducts(data);
-        setAllProducts(data);
-      });
-  }, []);
-
-  const filterProducts = (categoryItem) => {
-    const updateProducts = allProducts.filter((currentElement) => {
-      return currentElement.category === categoryItem;
-    });
-
-    setProducts(updateProducts);
-  };
-
-  const allCategories = () => {
-    // console.log('categories');
-    const allCategories = allProducts.map((allp) => {
-      return allp;
-    });
-    setProducts(allCategories);
-  };
+  // useEffect(() => {
+  //   fetch("https://electon-e-commerce-server.vercel.app/allproducts")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       console.log(data);
+  //       setProducts(data);
+  //       setAllProducts(data);
+  //     });
+  // }, []);
 
   return (
     <div>
       <section>
-        <div className="products-container row">
-          <div className="product-category col-2">
+        <div className="products-container ">
+          <div className="product-category  ">
             <ul className="category-container">
               <li onClick={allCategories}>All Categories</li>
               <li onClick={() => filterProducts("smartphones")}>
@@ -49,16 +36,16 @@ const Shop = () => {
                 Home-decoration{" "}
               </li>
               <li onClick={() => filterProducts("fragrances")}>Fragrances </li>
-              {/* <li>SkinCare</li>
+              <li>SkinCare</li>
               <li>Groceries</li>
               <li>Home-decoration</li>
-              <li>Fragrances</li> */}
+              <li>Fragrances</li>
             </ul>
-            {/* <hr className=" w-75 m-auto" /> */}
+            <hr className=" w-75 m-auto" />
 
             {/* <h5 className="text-start ms-5 pt-5">Brand</h5> */}
-
-            {/* <ul className="category-container">
+            {/* 
+            <ul className="category-container">
               <li>Apple</li>
               <li>Apple</li>
               <li>Apple</li>
@@ -69,14 +56,15 @@ const Shop = () => {
             {/* {products.map((product) => (
               <>
                 <div>
-                  <ul >
+                  <ul>
                     <li>{product.brand}</li>
                   </ul>
                 </div>
               </>
             ))} */}
           </div>
-          <div className="display-all-products w-75 col-10">
+          {/* <h1 className="text-3xl font-bold underline">Hello world!</h1> */}
+          <div className="display-all-products ">
             {products.slice(0, 12).map((product) => (
               <DisplayProducts
                 product={product}

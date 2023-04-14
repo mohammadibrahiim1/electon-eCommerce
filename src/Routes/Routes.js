@@ -5,9 +5,10 @@ import ContactUs from "../Components/ContactUs/ContactUs";
 import Home from "../Components/Home/Home";
 import Login from "../Components/Login/Login";
 import ProductsDetails from "../Components/ProductsDetails/ProductsDetails";
-import Shop from "../Components/Shop/Shop";
+// import Shop from "../Components/Shop/Shop";
 import Signin from "../Components/Signin/Signin";
 import Root from "../Root/Root";
+import Shop from "../Pages/Shop/Shop";
 
 export const router = createBrowserRouter([
   {

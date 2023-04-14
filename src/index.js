@@ -4,17 +4,18 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { ProductsProvider } from "./Components/Context/Context";
+import DataContext from "./Components/DataContext/DataContext";
 // import Context from "./Components/Context/Context";
 // import {ContextProvider} from "./Components/Context/Context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-
-<ProductsProvider>
-<App />
-</ProductsProvider>
-  
+    <ProductsProvider>
+      <DataContext>
+        <App />
+      </DataContext>
+    </ProductsProvider>
   </React.StrictMode>
 );
 

@@ -1,26 +1,38 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import "./DisplayProducts.css";
 
 const DisplayProducts = ({ product }) => {
   console.log(product);
-  const { title, price, rating, thumbnail,_id } = product;
+  const { title, price, rating, thumbnail, description, _id } = product;
   return (
     <div>
-      <div class="col">
-        <Link to={`/productdetails/${_id}`} class="card text-decoration-none" style={{ width: "308px", height: "313px" }}>
+      <div
+        className="card w-96 bg-base-100 shadow-xl  "
+        style={{ width: "320.83px", height: "420px" }}
+      >
+        <figure className="p-5">
           <img
+            className="rounded-xl"
             src={thumbnail}
-            class="card-img-top m-auto mt-2"
-            alt="..."
-            style={{ width: "282px", height: "168px" }}
+            alt="Shoes"
+            style={{
+              width: "300px",
+              height: "168px",
+            }}
           />
-          <div class="card-body">
-            <h5 class="card-title">{title.slice(0,20)}</h5>
-            <p class="card-text text-dark">Price: ${price}</p>
-            <p class="card-text text-dark">Ratings: {rating}</p>
+        </figure>
+        <div className="card-body">
+          <h2 className="card-title">
+            {title}
+            <div className="badge badge-secondary">NEW</div>
+          </h2>
+          <p>{description.slice(0, 35)}...</p>
+          <div className="card-actions justify-end">
+            <div className="badge badge-outline">{rating}</div>
+            <div className="badge badge-outline">${price}</div>
           </div>
-        </Link>
+        </div>
       </div>
     </div>
   );
