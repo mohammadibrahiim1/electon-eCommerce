@@ -33,6 +33,21 @@ const ProductsDetails = () => {
                 className="rounded-xl"
                 style={{ width: "647px", height: "461px" }}
               />
+
+              <div className="flex gap-2 my-4">
+                {images
+                  ? images.map((img) => (
+                      <>
+                        <img
+                          src={img}
+                          alt=""
+                          className="rounded-xl"
+                          style={{ width: "123px", height: "120px" }}
+                        />{" "}
+                      </>
+                    ))
+                  : ""}
+              </div>
             </div>
 
             <div>
