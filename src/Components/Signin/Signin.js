@@ -68,7 +68,7 @@ createUser(email, password)
     }
     updateUserProfile(profile)
     .then(()=>{})
-    .catch((erron)=> console.error(error))
+    .catch((error)=> console.error(error))
   }
 
     return (
