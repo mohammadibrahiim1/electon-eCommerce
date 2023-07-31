@@ -10,10 +10,7 @@ const DisplayProducts = ({ product }) => {
   const { title, price, rating, thumbnail, description, _id } = product;
   return (
     <div>
-      <div
-        className="card w-96 bg-base-100 shadow-xl  "
-        style={{ width: "320.83px", height: "420px" }}
-      >
+      <div className="card w-96 bg-base-100 shadow-xl  " style={{ width: "320.83px", height: "420px" }}>
         <figure className="p-5">
           <img
             className="rounded-xl"
@@ -33,10 +30,7 @@ const DisplayProducts = ({ product }) => {
           <p>{description.slice(0, 35)}...</p>
           <div className="card-actions justify-end">
             {/* <button className="btn btn-primary">details</button> */}
-            <Link
-              className="badge badge-outline"
-              to={`/productsDetails/${_id}`}
-            >
+            <Link className="badge badge-outline" to={`/productsDetails/${_id}`}>
               Details
             </Link>
             <div className="badge badge-outline">rating:{rating}</div>

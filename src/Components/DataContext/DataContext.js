@@ -1,10 +1,14 @@
-import React, { createContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useEffect, useReducer, useState } from "react";
+import { initialState, productReducer } from "../../state/productState/productReducer";
+import { actionTypes } from "../../state/productState/actionTypes";
 
 export const ApiContext = createContext();
 
 const DataContext = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
+  const [state, dispatch] = useReducer(productReducer, initialState);
+  console.log(state);
   // const [products, setProducts] = useState([]);
 
   const filterProducts = (categoryItem) => {
@@ -24,15 +28,21 @@ const DataContext = ({ children }) => {
   };
 
   useEffect(() => {
+    dispatch({ type: actionTypes.FETCHING_START });
     fetch(`http://localhost:5000/products`)
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        setProducts(data);
+      .then(
+        (data) =>
+          // console.log(data);
+          dispatch({ type: actionTypes.FETCHING_SUCCESS, payload: data })
+        // setProducts(data);
+      )
+      .catch(() => {
+        dispatch({ type: actionTypes.FETCHING_ERROR });
       });
   }, []);
 
-  const apiData = { products,allCategories,filterProducts };
+  const apiData = { state, dispatch, allCategories, filterProducts };
 
   return (
     <div>
@@ -41,4 +51,8 @@ const DataContext = ({ children }) => {
   );
 };
 
+export const useProducts = () => {
+  const context = useContext(ApiContext);
+  return context;
+};
 export default DataContext;

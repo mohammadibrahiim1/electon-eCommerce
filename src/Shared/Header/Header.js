@@ -11,7 +11,7 @@ import "./Header.css";
 
 const Header = () => {
   const { user, logOut } = useContext(ProductContext);
-  console.log(user);
+  // console.log(user);
 
   const handleSignOut = () => {
     logOut()
