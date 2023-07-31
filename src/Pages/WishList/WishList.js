@@ -1,10 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
-// import { useLoaderData } from "react-router-dom";
-import DisplayProducts from "../../Components/DisplayProducts/DisplayProducts";
+import React from "react";
 import { useProducts } from "../../Components/DataContext/DataContext";
-import "./Shop.css";
+import TopRatedProduct from "../../Components/ToRatedProduct/TopRatedProduct";
 
-const Shop = () => {
+const WishList = () => {
   const {
     state: { products, loading, error },
   } = useProducts();
@@ -23,14 +21,17 @@ const Shop = () => {
   }
 
   if (!loading && !error && products.length) {
-    content = products.map((product) => <DisplayProducts product={product} key={product._id}></DisplayProducts>);
+    content = products
+      .filter((product) => product.rating > 4.7)
+      .map((product) => <TopRatedProduct product={product} key={product._id}></TopRatedProduct>);
+    console.log(content);
   }
-
   return (
     <div>
-      <section>{content}</section>
+      <p>{content}</p>
+      <p>{content.length}</p>
     </div>
   );
 };
 
-export default Shop;
+export default WishList;

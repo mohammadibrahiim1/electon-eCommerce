@@ -9,7 +9,7 @@ import ProductsDetails from "../Components/ProductsDetails/ProductsDetails";
 import Signin from "../Components/Signin/Signin";
 import Root from "../Root/Root";
 import Shop from "../Pages/Shop/Shop";
-
+import WishList from "../Pages/WishList/WishList";
 
 export const router = createBrowserRouter([
   {
@@ -30,13 +30,10 @@ export const router = createBrowserRouter([
         element: <Shop></Shop>,
       },
 
-   
-
       {
         path: "/productsDetails/:id",
         element: <ProductsDetails></ProductsDetails>,
-        loader: ({ params }) =>
-          fetch(`http://localhost:5000/products/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/products/${params.id}`),
       },
       {
         path: "/cart",
@@ -57,6 +54,10 @@ export const router = createBrowserRouter([
       {
         path: "/signin",
         element: <Signin></Signin>,
+      },
+      {
+        path: "/wishList",
+        element: <WishList></WishList>,
       },
     ],
   },
