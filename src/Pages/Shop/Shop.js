@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 // import { useLoaderData } from "react-router-dom";
 import DisplayProducts from "../../Components/DisplayProducts/DisplayProducts";
 import { ApiContext } from "../../Components/DataContext/DataContext";
@@ -18,6 +18,16 @@ const Shop = () => {
   //       setAllProducts(data);
   //     });
   // }, []);
+
+  const [newProducts, setNewProducts] = useState([]);
+  useEffect(() => {
+    fetch("newProducts.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setNewProducts(data);
+        console.log(data);
+      });
+  }, []);
 
   return (
     <div>
@@ -63,6 +73,7 @@ const Shop = () => {
               </>
             ))} */}
           </div>
+          {newProducts.length}
           {/* <h1 className="text-3xl font-bold underline">Hello world!</h1> */}
           <div className="display-all-products ">
             {products.slice(0, 12).map((product) => (

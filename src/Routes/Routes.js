@@ -10,6 +10,7 @@ import Signin from "../Components/Signin/Signin";
 import Root from "../Root/Root";
 import Shop from "../Pages/Shop/Shop";
 
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -28,6 +29,9 @@ export const router = createBrowserRouter([
         path: "/shop",
         element: <Shop></Shop>,
       },
+
+   
+
       {
         path: "/productsDetails/:id",
         element: <ProductsDetails></ProductsDetails>,
