@@ -1,178 +1,192 @@
-import React from "react";
+import { createStyles, Text, Container, ActionIcon, Group, rem, Image, Input, Button } from "@mantine/core";
+import { IconBrandTwitter, IconBrandYoutube, IconBrandInstagram, IconAt } from "@tabler/icons-react";
+// import { MantineLogo } from "@mantine/ds";
 import { Link } from "react-router-dom";
-import { FaFacebook } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { FaGoogle } from "react-icons/fa";
-import { FaYoutube } from "react-icons/fa";
-import "./Footer.css";
-const Footer = () => {
-  return (
-    <div>
-      <section>
-        {/* <!--====== FOOTER ONE PART START ======--> */}
-        <footer class="footer-areLink footer-one mt-5">
-          <div class="footer-widget">
-            <div class="">
-              <div class="row">
-                <div class="col-xl-4 col-lg-4 col-sm-12 col-md-4  text-center text-lg-end  text-md-center text-sm-center">
-                  <div class="f-about">
-                    <div class="footer-logo">
-                      <Link to="/">
-                        <img
-                          src="https://i.ibb.co/qxc3SCB/logo-1.png"
-                          alt="Logo"
-                        />
-                      </Link>
-                    </div>
-                    <p class="text">
-                      64 st james boulevard <br />
-                      hoswick , ze2 7zj
-                    </p>
-                  </div>
-                  <div class="">
-                    <h5 class="text-lg-end text-md-center text-sm-center col-lg-8">find us!</h5>
-                  <div className="col-lg-8 ">
-                   <Link to="/">
-                      <FaFacebook
-                        className="text-secondary-emphasis me-3"
-                        style={{ height: "22px", width: "22px" }}
-                      />
-                    </Link>
 
-                    <Link to="/">
-                      <FaInstagram
-                        className="text-secondary-emphasis me-3"
-                        style={{ height: "22px", width: "22px" }}
-                      />
-                    </Link>
-                    <Link to="/">
-                      <FaGoogle
-                        className="text-secondary-emphasis me-3"
-                        style={{ height: "22px", width: "22px" }}
-                      />
-                    </Link>
-                    <Link to="/">
-                      <FaYoutube
-                        className="text-secondary-emphasis me-3"
-                        style={{ height: "22px", width: "22px" }}
-                      />
-                    </Link>
-                   </div>
-                  </div>
-                </div>
-                <div class="col-xl-2 col-lg-2 col-sm-12 col-md-4 text-center text-lg-start text-md-center text-sm-center mt-3">
-                  <div class="footer-link">
-                    <h6 class="footer-title">Company</h6>
-                    <ul className="list-unstyled text-decoration-none">
-                      <li>
-                        <Link to="/">About</Link>
-                      </li>
-                      <li>
-                        <Link to="/">Contact</Link>
-                      </li>
-                      <li>
-                        <Link to="/">Marketing</Link>
-                      </li>
-                      <li>
-                        <Link to="/">Awards</Link>
-                      </li>
-                    </ul>
-                  </div>
-                  {/* <!-- footer link --> */}
-                </div>
-                <div class="col-xl-2 col-lg-3 col-sm-12 col-md-4 text-center text-lg-start text-md-center text-sm-center  ">
-                  <div class="footer-link ">
-                    <h6 class="footer-title pt-3">Services</h6>
-                    <ul className="list-unstyled">
-                      <li>
-                        <Link to="/">Products</Link>
-                      </li>
-                      <li>
-                        <Link to="/">Business</Link>
-                      </li>
-                      <li>
-                        <Link to="/">Developer</Link>
-                      </li>
-                      <li>
-                        <Link to="/">Insights</Link>
-                      </li>
-                    </ul>
-                  </div>
-                  {/* <!-- footer link --> */}
-                </div>
-                <div class="col-xl-2 col-lg-4 col-sm-12 col-md-12 text-center text-sm-center text-md-center text-lg-end">
-                  {/* <!-- Start Footer Contact --> */}
-                  <div class="">
-                    <h6 class="footer-title pt-5">Help & Suuport</h6>
-                    <ul className="list-unstyled">
-                      <li>
-                        <i class=""></i> Madison Street,
-                        NewYork, USA
-                      </li>
-                      <li>
-                        <i class="lni lni-phone-set"></i> +88 556 88545
-                      </li>
-                      <li>
-                        <i class="lni lni-envelope"></i> support@ayroui.com
-                      </li>
-                    </ul>
-                  </div>
-                  {/* <!-- End Footer Contact --> */}
-                </div>
-              </div>
-              {/* <!-- row --> */}
-            </div>
-            {/* <!-- container --> */}
+const useStyles = createStyles((theme) => ({
+  footer: {
+    marginTop: rem(120),
+    paddingTop: `calc(${theme.spacing.xl} * 2)`,
+    paddingBottom: `calc(${theme.spacing.xl} * 2)`,
+    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[9],
+    borderTop: `${rem(1)} solid ${theme.colorScheme === "dark" ? theme.colors.dark[5] : theme.colors.gray[2]}`,
+  },
+
+  logo: {
+    width: "300px",
+    [theme.fn.smallerThan("sm")]: {
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+    },
+  },
+
+  description: {
+    marginTop: rem(16),
+
+    [theme.fn.smallerThan("sm")]: {
+      marginTop: theme.spacing.xs,
+      textAlign: "center",
+    },
+  },
+
+  inner: {
+    maxWidth: "1400px",
+    margin: "auto",
+    // display: "flex",
+    // justifyContent: "space-evenly",
+
+    [theme.fn.smallerThan("sm")]: {
+      flexDirection: "column",
+      alignItems: "center",
+    },
+  },
+
+  groups: {
+    display: "flex",
+    flexWrap: "wrap",
+
+    [theme.fn.smallerThan("sm")]: {
+      display: "none",
+    },
+  },
+
+  wrapper: {
+    width: rem(160),
+  },
+
+  link: {
+    display: "block",
+    color: theme.colorScheme === "dark" ? theme.colors.dark[1] : theme.colors.gray[6],
+    fontSize: theme.fontSizes.sm,
+    paddingTop: rem(3),
+    paddingBottom: rem(3),
+
+    "&:hover": {
+      textDecoration: "underline",
+    },
+  },
+
+  title: {
+    fontSize: theme.fontSizes.lg,
+    fontWeight: 700,
+    fontFamily: `Greycliff CF, ${theme.fontFamily}`,
+    marginBottom: `calc(${theme.spacing.xs} / 2)`,
+    color: theme.colorScheme === "dark" ? theme.white : theme.black,
+  },
+
+  afterFooter: {
+    display: "flex",
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: theme.spacing.xl,
+    paddingTop: theme.spacing.xl,
+    paddingBottom: theme.spacing.xl,
+    borderTop: `${rem(1)} solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]}`,
+
+    [theme.fn.smallerThan("sm")]: {
+      flexDirection: "column",
+    },
+  },
+
+  subscribe_button: {
+    backgroundColor: "#D43533 !important",
+    border: "1px solid #D43533 ",
+    borderRadius: 0,
+  },
+
+  social: {
+    [theme.fn.smallerThan("sm")]: {
+      marginTop: theme.spacing.xs,
+    },
+  },
+}));
+
+const data = [
+  {
+    links: [
+      { label: "Shop", link: "/Shop" },
+      { label: "Contact", link: "/Contact" },
+      { label: "Privacy & Policy", link: "/Privacy & policy" },
+      { label: "About", link: "/About" },
+    ],
+  },
+];
+
+export const Footer = () => {
+  const { classes } = useStyles();
+
+  const groups = data.map((group) => {
+    const links = group.links.map((link, index) => (
+      <Text key={index} className={classes.link} component="a" href={link.link} onClick={() => link.link}>
+        {link.label}
+      </Text>
+    ));
+    return (
+      <div className={classes.wrapper} key={group.title}>
+        <Text className={classes.title}>{group.title}</Text>
+        {links}
+      </div>
+    );
+  });
+
+  return (
+    <footer className={classes.footer}>
+      <section className={classes.inner}>
+        <div className={classes.logo}>
+          <Link to="/">
+            <Image
+              width={283}
+              height={44}
+              mx="auto"
+              radius="md"
+              src="https://i.ibb.co/0nfytmZ/R4x-NSs0c-HVjjv-Uh-Gq4-I3z71-D7feug7-LDAv-Lbo3wu.png"
+              alt="Random image"
+            />
+          </Link>
+          <Text size="sm" color="#f2f3f8" className={classes.description}>
+            Complete system for your eCommerce business
+          </Text>
+        </div>
+        <div>
+          <div className="w-[700px] flex items-center justify-between gap-3 mt-5">
+            <Input.Wrapper
+              radius={0}
+              description="Subscribe to our newsletter for regular updates about Offers, Coupons & more"
+            >
+              <Input
+                w={"500px"}
+                icon={<IconAt />}
+                placeholder="Your email address"
+                size="lg"
+                type="email"
+                name="email"
+              />
+            </Input.Wrapper>
+            <Button mt={12} className={classes.subscribe_button} w={"200px"} size="lg">
+              Subscribe
+            </Button>
           </div>
-          {/* <!-- footer widget --> */}
-          <div class="footer-copyright">
-            <div class="container">
-              <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 text-center text-md-center text-lg-center text-sm-center">
-                  <div
-                    class="
-                
-                  "
-                  >
-                    <p class="text-center">
-                      Copyright © 2024 AyroUI. All Rights Reserved
-                    </p>
-                    <ul class="social">
-                      <li>
-                        <Link to="/">
-                          <i class="lni lni-facebook-filled"></i>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/">
-                          <i class="lni lni-twitter-original"></i>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/">
-                          <i class="lni lni-instagram-filled"></i>
-                        </Link>
-                      </li>
-                      <li>
-                        <Link to="/">
-                          <i class="lni lni-linkedin-original"></i>
-                        </Link>
-                      </li>
-                    </ul>
-                  </div>
-                  {/* <!-- copyright --> */}
-                </div>
-              </div>
-              {/* <!-- row --> */}
-            </div>
-            {/* <!-- container --> */}
-          </div>
-          {/* <!-- footer copyright --> */}
-        </footer>
-        {/* <!--====== FOOTER ONE PART ENDS ======--> */}
+        </div>
+        <div className={classes.groups}>{groups}</div>
       </section>
-    </div>
+      <Container className={classes.afterFooter}>
+        <Text color="dimmed" size="sm">
+          © 2020 mantine.dev. All rights reserved.
+        </Text>
+
+        <Group spacing={0} className={classes.social} position="right" noWrap>
+          <ActionIcon size="lg">
+            <IconBrandTwitter size="1.05rem" stroke={1.5} />
+          </ActionIcon>
+          <ActionIcon size="lg">
+            <IconBrandYoutube size="1.05rem" stroke={1.5} />
+          </ActionIcon>
+          <ActionIcon size="lg">
+            <IconBrandInstagram size="1.05rem" stroke={1.5} />
+          </ActionIcon>
+        </Group>
+      </Container>
+    </footer>
   );
 };
-
-export default Footer;
