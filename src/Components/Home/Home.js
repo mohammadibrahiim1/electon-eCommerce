@@ -1,136 +1,60 @@
 import React, { useEffect, useState } from "react";
-// import Discount from "./Discount";
 import "./Home.css";
-import Other from "./Other";
-import PopularProducts from "./PopularProducts";
-import ProductSlider from "./ProductSlider";
+// import { ADD_TO_CART } from "../../redux/actionTypes/actionTypes";
+
+import { useDispatch, useSelector } from "react-redux";
+import { Badge, Button, Card, Group, Image, Text } from "@mantine/core";
+import { addToCart } from "../../redux/actionCreators/productActions";
 
 const Home = () => {
-  const [airline, setAirline] = useState();
-  console.log(airline);
+  const dispatch = useDispatch();
+  const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch("alirline.json")
+    fetch("http://localhost:5000/products")
       .then((res) => res.json())
       .then((data) => {
-        setAirline(data);
-        console.log(data);
+        setProducts(data);
       });
   }, []);
+  const state = useSelector((state) => state);
+  console.log(state);
+
   return (
     <div>
-      <section class=" header-section mt-5">
-        {/* {airline.length} */}
-        <div
-          id="carouselExampleControls"
-          class="carousel slide "
-          data-bs-ride="carousel"
-        >
-          <div class="carousel-inner">
-            <div class="carousel-item active bg-white  pb-3  mt-5">
-              <div class="row">
-                <div class="col-lg-7  ">
-                  <div>
-                    <h1>
-                      Canon <br /> Camera
-                    </h1>
-                    <p>
-                      This is the best headphone in the world for people who
-                      just want to waste time in front of funky world.
-                    </p>
-                    <h1>$400</h1>
-                    <div className="mt-4">
-                      <div class="btn shop-button">shop Now</div>
-                      <div class="btn view-button">view more</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-5 carousel-img ">
-                  <img src="https://i.ibb.co/0JwrvxF/8-1.png" alt="..." />
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item active bg-white  p-5 pe-5   pb-3  border-0 mt-5">
-              <div class="row">
-                <div class="col-lg-7 d-flex align-items-center ">
-                  <div>
-                    <h1>
-                      Canon <br /> Camera
-                    </h1>
-                    <p>
-                      This is the best x-box in the world for people who just
-                      want to waste time in front of fake sports.
-                    </p>
-                    <h1>$400</h1>
-                    <div className="mt-4">
-                      <div class="btn shop-button">shop Now</div>
-                      <div class="btn view-button">view more</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-5 carousel-img">
-                  <img src="https://i.ibb.co/0JwrvxF/8-1.png" alt="..." />
-                </div>
-              </div>
-            </div>
-            <div class="carousel-item active bg-white p-5 pe-5  pb-3  mt-5">
-              <div class="row">
-                <div class="col-lg-7 d-flex align-items-center ">
-                  <div>
-                    <h1>
-                      Canon <br /> Camera
-                    </h1>
-                    <p>
-                      This is the best tv in the world for people who just want
-                      to waste time in front of tv.
-                    </p>
-                    <h1>$400</h1>
-                    <div className="mt-4">
-                      <div class="btn shop-button">shop Now</div>
-                      <div class="btn view-button">view more</div>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-lg-5 carousel-img">
-                  <img src="https://i.ibb.co/0JwrvxF/8-1.png" alt="..." />
-                </div>
-              </div>
-            </div>
+      <p>home page {products.length} </p>
 
-            <button
-              class="carousel-control-prev"
-              type="button"
-              data-bs-target="#carouselExampleControls"
-              data-bs-slide="prev"
+      {products.map((product) => (
+        <>
+          <Card shadow="sm" padding="lg" radius="md" withBorder w={320}>
+            <Card.Section component="a" href="https://mantine.dev/">
+              <Image src={product.thumbnail} height={160} alt="Norway" />
+            </Card.Section>
+
+            <Group position="apart" mt="md" mb="xs">
+              <Text weight={500}>{product.title}</Text>
+              <Badge color="pink" variant="light">
+                ${product.price}
+              </Badge>
+            </Group>
+
+            <Text size="sm" color="dimmed">
+              {product.description}
+            </Text>
+
+            <Button
+              onClick={() => dispatch(addToCart(product))}
+              variant="light"
+              color="blue"
+              fullWidth
+              mt="md"
+              radius="md"
             >
-              <span
-                class="carousel-control-prev-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button
-              class="carousel-control-next"
-              type="button"
-              data-bs-target="#carouselExampleControls"
-              data-bs-slide="next"
-            >
-              <span
-                class="carousel-control-next-icon"
-                aria-hidden="true"
-              ></span>
-              <span class="visually-hidden">Next</span>
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* <section className="product-slider"></section> */}
-
-      <ProductSlider></ProductSlider>
-      <PopularProducts></PopularProducts>
-      {/* <Discount></Discount> */}
-      <Other></Other>
+              add to cart
+            </Button>
+          </Card>
+        </>
+      ))}
     </div>
   );
 };

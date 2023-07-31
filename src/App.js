@@ -1,14 +1,15 @@
 import { RouterProvider } from "react-router-dom";
 import { router } from "./Routes/Routes";
-// import "./App.css";
-// import Context from "./Components/Context/Context";
-// import { AuthProvider } from "./Components/Context/Context";
-// import { ProductContext } from "./Components/Context/Context";
+import { Provider } from "react-redux";
+import store from "./redux/store";
+
 
 function App() {
   return (
     <div>
-      <RouterProvider router={router}></RouterProvider>
+      <Provider store={store}>
+        <RouterProvider router={router}></RouterProvider>
+      </Provider>
     </div>
   );
 }

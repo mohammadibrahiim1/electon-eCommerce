@@ -22,7 +22,7 @@ const Cart = () => {
   }
 
   if (!loading && !error && cart.length) {
-    content = cart.map((product) => (
+    content = cart?.map((product) => (
       <>
         <div className="card w-96 bg-base-100 shadow-xl  " style={{ width: "320.83px", height: "420px" }}>
           <figure className="p-5">
@@ -41,7 +41,7 @@ const Cart = () => {
               {product.title}
               <div className="badge badge-secondary">NEW</div>
             </h2>
-            <p>{product.description.slice(0, 35)}...</p>
+            <p>{product.description?.slice(0, 35)}...</p>
             <div className="card-actions justify-end">
               {/* <button className="btn btn-primary">details</button> */}
               <Link className="badge badge-outline" to={`/productsDetails/${product._id}`}>
@@ -51,9 +51,6 @@ const Cart = () => {
               <div className="badge badge-outline">${product.price}</div>
             </div>
           </div>
-          {/* <button className="btn" onClick={() => dispatch({ type: actionTypes.ADD_TO_CART, payload: { product } })}>
-          add to cart
-        </button> */}
         </div>
       </>
     ));

@@ -2,11 +2,11 @@ import React from "react";
 // import { Link } from "react-router-dom";
 import "./DisplayProducts.css";
 import { Link, useLoaderData } from "react-router-dom";
-import { useProducts } from "../DataContext/DataContext";
-import { actionTypes } from "../../state/productState/actionTypes";
+// import { useProducts } from "../DataContext/DataContext";
+// import { actionTypes } from "../../state/productState/actionTypes";
 
 const DisplayProducts = ({ product }) => {
-  const { dispatch } = useProducts();
+  // const { dispatch } = useProducts();
   // const productsDetails = useLoaderData();
   // console.log(productsDetails);
   // console.log(product);
@@ -40,7 +40,9 @@ const DisplayProducts = ({ product }) => {
             <div className="badge badge-outline">${price}</div>
           </div>
         </div>
-        <button className="btn" onClick={() => dispatch({ type: actionTypes.ADD_TO_CART, payload: { product } })}>
+        <button className="btn" 
+        // onClick={() => dispatch({ type: actionTypes.ADD_TO_CART, payload: { product } })}
+        >
           add to cart
         </button>
       </div>
