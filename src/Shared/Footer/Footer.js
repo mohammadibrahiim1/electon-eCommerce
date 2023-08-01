@@ -83,10 +83,10 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    marginTop: theme.spacing.xl,
-    paddingTop: theme.spacing.xl,
-    paddingBottom: theme.spacing.xl,
-    borderTop: `${rem(1)} solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]}`,
+    // marginTop: theme.spacing.xl,
+    // paddingTop: theme.spacing.xl,
+    // paddingBottom: theme.spacing.xl,
+    // borderTop: `${rem(1)} solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]}`,
 
     [theme.fn.smallerThan("sm")]: {
       flexDirection: "column",
@@ -123,40 +123,37 @@ const useStyles = createStyles((theme) => ({
 const dataOne = [
   {
     links: [
-      { label: "Shop", link: "/Shop" },
-      { label: "Contact", link: "/Contact" },
-      { label: "Privacy & Policy", link: "/Privacy & policy" },
-      { label: "About", link: "/About" },
+      { label: "Support Policy Page", link: "/support" },
+      { label: "Return Policy Page", link: "/returnPolicy" },
+      { label: "About Us", link: "/about" },
+      { label: "Privacy Policy Page", link: "/privacy&policy" },
+      { label: "Seller Policy", link: "/sellerPolicy" },
+      { label: "Term Condition Page", link: "/term&condition" },
     ],
   },
 ];
 const dataTwo = [
   {
-    links: [
-      { label: "Shop", link: "/Shop" },
-      { label: "Contact", link: "/Contact" },
-      { label: "Privacy & Policy", link: "/Privacy & policy" },
-      { label: "About", link: "/About" },
-    ],
+    links: [{ label: "Demo Address" }, { label: "+88 125463112" }, { label: "demo.example@gmail.com" }],
   },
 ];
 const dataThree = [
   {
     links: [
-      { label: "Shop", link: "/Shop" },
-      { label: "Contact", link: "/Contact" },
-      { label: "Privacy & Policy", link: "/Privacy & policy" },
-      { label: "About", link: "/About" },
+      { label: "Logout", link: "/logout" },
+      { label: "Order History", link: "/orderHistory" },
+      { label: "My Wishlist", link: "/myWishlist" },
+      { label: "Track Order", link: "/trackOrder" },
+      { label: "Be an affiliate partner", link: "/affiliate partner" },
     ],
   },
 ];
 const dataFour = [
   {
     links: [
-      { label: "Shop", link: "/Shop" },
-      { label: "Contact", link: "/Contact" },
-      { label: "Privacy & Policy", link: "/Privacy & policy" },
-      { label: "About", link: "/About" },
+      { label: "Become A Seller", link: "/applyNow" },
+      { label: "Download Seller App", link: "/sellerApp" },
+      { label: "Download Delivery Boy App", link: "/deliveryBoyApp" },
     ],
   },
 ];
@@ -311,6 +308,7 @@ export const Footer = () => {
             </div>
           </div>
         </section>
+        <hr className="my-5" />
         <Container className={classes.afterFooter}>
           <div className={classes.groups}>{groupsOne}</div>
           <div className={classes.groups}>{groupsTwo}</div>
