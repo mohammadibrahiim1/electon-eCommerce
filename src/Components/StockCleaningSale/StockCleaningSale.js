@@ -12,19 +12,19 @@ const useStyles = createStyles((theme) => ({
     overflow: "hidden",
 
     [`&:hover .${getStylesRef("product_img")}`]: {
-      transform: "scale(1.03)",
+      transform: "scale(1.08)",
     },
 
     "&:hover": {
       boxShadow: "0  5px 6px 0 #DCDCDF",
-      transition: " 0.3s",
+      transition: " 0.5s",
       transform: "scale(1.01)",
     },
 
     [`&:hover .${getStylesRef("hover_text")}`]: {
       position: "relative",
-      bottom: "20px",
-      // transform: "scale(1.03)",
+      bottom: "30px",
+      transition: "0.5s",
     },
   },
 
@@ -82,8 +82,7 @@ const useStyles = createStyles((theme) => ({
 
   hover_text: {
     ref: getStylesRef("hover_text"),
-    transition: "transform 500ms ease",
-    // transition: "all 0.3s ease",
+    transition: "0.5s",
   },
 }));
 
@@ -174,7 +173,7 @@ const StockCleaningSale = () => {
                           <Text fz="md" c={"#D00906"} pt={50} fw={700} align="center">
                             ${product.price}
                           </Text>
-                          <Text fz="md" pb={15} c={"#D00906"} fw={700} align="center">
+                          <Text fz="md" pb={15} c={"#C1C2C5"} fw={700} align="center" td="line-through">
                             {product.rating.count}
                           </Text>
                         </div>
