@@ -9,17 +9,22 @@ const useStyles = createStyles((theme) => ({
     borderTop: "1px solid #F1F3F5",
     borderLeft: "1px solid #F1F3F5",
     height: "237px",
-    // width: "162px",
-    // margin: "auto",
     overflow: "hidden",
 
     [`&:hover .${getStylesRef("product_img")}`]: {
       transform: "scale(1.03)",
     },
+
     "&:hover": {
       boxShadow: "0  5px 6px 0 #DCDCDF",
       transition: " 0.3s",
       transform: "scale(1.01)",
+    },
+
+    [`&:hover .${getStylesRef("hover_text")}`]: {
+      position: "relative",
+      bottom: "20px",
+      // transform: "scale(1.03)",
     },
   },
 
@@ -77,7 +82,8 @@ const useStyles = createStyles((theme) => ({
 
   hover_text: {
     ref: getStylesRef("hover_text"),
-    transition: "all 0.3s ease",
+    transition: "transform 500ms ease",
+    // transition: "all 0.3s ease",
   },
 }));
 
@@ -164,11 +170,11 @@ const StockCleaningSale = () => {
                       <div className={classes.card}>
                         <img className={classes.product_img} src={product.image} alt={product.name} />
 
-                        <div>
-                          <Text fz="md" c={"#D00906"} pt={45} pb={4} fw={700} align="center">
+                        <div className={classes.hover_text}>
+                          <Text fz="md" c={"#D00906"} pt={50} fw={700} align="center">
                             ${product.price}
                           </Text>
-                          <Text className={classes.hover_text} fz="md" pb={15} c={"#D00906"} fw={700} align="center">
+                          <Text fz="md" pb={15} c={"#D00906"} fw={700} align="center">
                             {product.rating.count}
                           </Text>
                         </div>
