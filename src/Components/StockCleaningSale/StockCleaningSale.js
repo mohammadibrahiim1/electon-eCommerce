@@ -160,7 +160,7 @@ const StockCleaningSale = () => {
               <Box>
                 <BackgroundImage
                   src="https://demo.activeitzone.com/ecommerce/public/uploads/all/SLPVFkT5hIcmqUoQuCTanzBpWjP9QZWGcAeVV0oE.png"
-                  radius="sm"
+                  radius="none"
                   // backgroundSize="cover"
                 >
                   <div className={classes.countDown_container}>
