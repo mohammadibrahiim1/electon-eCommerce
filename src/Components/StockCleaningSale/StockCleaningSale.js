@@ -8,6 +8,10 @@ const useStyles = createStyles((theme) => ({
     backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
     borderTop: "1px solid #F1F3F5",
     borderLeft: "1px solid #F1F3F5",
+    height: "237px",
+    // width: "162px",
+    // margin: "auto",
+    overflow: "hidden",
 
     [`&:hover .${getStylesRef("product_img")}`]: {
       transform: "scale(1.03)",
@@ -15,7 +19,7 @@ const useStyles = createStyles((theme) => ({
     "&:hover": {
       boxShadow: "0  5px 6px 0 #DCDCDF",
       transition: " 0.3s",
-      transform: "scale(1)",
+      transform: "scale(1.01)",
     },
   },
 
@@ -52,7 +56,7 @@ const useStyles = createStyles((theme) => ({
   },
   card_container: {
     display: "grid",
-    gridTemplateColumns: "repeat(4,1fr)",
+    gridTemplateColumns: "repeat(5,1fr)",
     justifyContent: "space-between",
     alignItems: "center",
     borderBottom: "1px solid #F1F3F5",
@@ -61,11 +65,11 @@ const useStyles = createStyles((theme) => ({
     zIndex: 1,
   },
   product_img: {
-    width: "100px",
-    height: "100px",
+    width: "140px",
+    height: "140px",
     margin: "auto",
-    padding: "15px",
-    marginTop: "40px",
+    padding: "30px",
+    marginTop: "15px",
     ref: getStylesRef("product_img"),
     backgroundSize: "cover",
     transition: "transform 500ms ease",
@@ -153,7 +157,7 @@ const StockCleaningSale = () => {
             <Grid.Col span={8}>
               {" "}
               <div className={classes.card_container}>
-                {scsell.map((product) => (
+                {scsell.slice(0, 10).map((product) => (
                   <>
                     {/* <div className={classes.card_border}> */}
                     <Link to="/cart">
@@ -161,7 +165,7 @@ const StockCleaningSale = () => {
                         <img className={classes.product_img} src={product.image} alt={product.name} />
 
                         <div>
-                          <Text fz="md" c={"#D00906"} pt={75} fw={700} align="center">
+                          <Text fz="md" c={"#D00906"} pt={45} pb={4} fw={700} align="center">
                             ${product.price}
                           </Text>
                           <Text className={classes.hover_text} fz="md" pb={15} c={"#D00906"} fw={700} align="center">
