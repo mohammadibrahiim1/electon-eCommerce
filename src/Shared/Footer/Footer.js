@@ -58,9 +58,12 @@ const useStyles = createStyles((theme) => ({
   },
 
   link: {
+    fontWeight: "700",
+    position: "relative",
+    textDecoration: " none",
     display: "block",
-    color: theme.colorScheme === "dark" ? theme.colors.dark[1] : theme.colors.gray[6],
-    fontSize: theme.fontSizes.sm,
+    color: theme.colorScheme === "dark" ? theme.colors.dark[1] : theme.colors.gray[0],
+    fontSize: theme.fontSizes.xs,
     paddingTop: rem(3),
     paddingBottom: rem(3),
 
@@ -151,7 +154,11 @@ const dataThree = [
 const dataFour = [
   {
     links: [
-      { label: "Become A Seller", link: "/applyNow" },
+      {
+        label: "Become a Seller-apply now",
+        link: "/applyNow",
+      },
+
       { label: "Download Seller App", link: "/sellerApp" },
       { label: "Download Delivery Boy App", link: "/deliveryBoyApp" },
     ],
@@ -250,7 +257,7 @@ export const Footer = () => {
                   size="md"
                   type="email"
                   name="email"
-                  radius={"none"}
+                  radius={0}
                 />
               </Input.Wrapper>
               <Button mt={22} className={classes.subscribe_button} w={"200px"} size="md">
@@ -308,7 +315,7 @@ export const Footer = () => {
             </div>
           </div>
         </section>
-        <hr className="my-5" />
+        <hr className="my-12" />
         <Container className={classes.afterFooter}>
           <div className={classes.groups}>{groupsOne}</div>
           <div className={classes.groups}>{groupsTwo}</div>

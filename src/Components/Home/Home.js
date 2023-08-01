@@ -5,6 +5,7 @@ import "./Home.css";
 import { useDispatch, useSelector } from "react-redux";
 import { Badge, Button, Card, Group, Image, Text } from "@mantine/core";
 import { addToCart } from "../../redux/actionCreators/productActions";
+import StockCleaningSale from "../StockCleaningSale/StockCleaningSale";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -22,39 +23,42 @@ const Home = () => {
 
   return (
     <div>
-      <p>home page {products.length} </p>
+      {/* <div>
+        <p>home page {products.length} </p>
 
-      {products.map((product) => (
-        <>
-          <Card shadow="sm" padding="lg" radius="md" withBorder w={320}>
-            <Card.Section component="a" href="https://mantine.dev/">
-              <Image src={product.thumbnail} height={160} alt="Norway" />
-            </Card.Section>
+        {products.map((product) => (
+          <>
+            <Card shadow="sm" padding="lg" radius="md" withBorder w={320}>
+              <Card.Section component="a" href="https://mantine.dev/">
+                <Image src={product.thumbnail} height={160} alt="Norway" />
+              </Card.Section>
 
-            <Group position="apart" mt="md" mb="xs">
-              <Text weight={500}>{product.title}</Text>
-              <Badge color="pink" variant="light">
-                ${product.price}
-              </Badge>
-            </Group>
+              <Group position="apart" mt="md" mb="xs">
+                <Text weight={500}>{product.title}</Text>
+                <Badge color="pink" variant="light">
+                  ${product.price}
+                </Badge>
+              </Group>
 
-            <Text size="sm" color="dimmed">
-              {product.description}
-            </Text>
+              <Text size="sm" color="dimmed">
+                {product.description}
+              </Text>
 
-            <Button
-              onClick={() => dispatch(addToCart(product))}
-              variant="light"
-              color="blue"
-              fullWidth
-              mt="md"
-              radius="md"
-            >
-              add to cart
-            </Button>
-          </Card>
-        </>
-      ))}
+              <Button
+                onClick={() => dispatch(addToCart(product))}
+                variant="light"
+                color="blue"
+                fullWidth
+                mt="md"
+                radius="md"
+              >
+                add to cart
+              </Button>
+            </Card>
+          </>
+        ))}
+      </div> */}
+      <StockCleaningSale></StockCleaningSale>
     </div>
   );
 };
