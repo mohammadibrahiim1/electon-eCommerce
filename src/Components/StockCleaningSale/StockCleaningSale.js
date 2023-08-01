@@ -2,6 +2,7 @@ import { BackgroundImage, Box, Grid, Text, createStyles, getStylesRef, rem } fro
 // import { AlignLeftControl } from "@mantine/tiptap/lib/controls";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import CountDownCircle from "../CountDownCircle/CountDownCircle";
 
 const useStyles = createStyles((theme) => ({
   card: {
@@ -146,16 +147,17 @@ const StockCleaningSale = () => {
 
         <div>
           <Grid grow gutter="lg">
-            <Grid.Col span={4} h={475} w={435}>
+            <Grid.Col span={4} h={475} w={437}>
               <Box>
                 <BackgroundImage
                   src="https://demo.activeitzone.com/ecommerce/public/uploads/all/SLPVFkT5hIcmqUoQuCTanzBpWjP9QZWGcAeVV0oE.png"
                   radius="sm"
                 >
-                  <Text color="#fff">
+                  {/* <Text color="#fff">
                     BackgroundImage component can be used to add any content on image. It is useful for hero headers and
                     other similar sections
-                  </Text>
+                  </Text> */}
+                  <CountDownCircle></CountDownCircle>
                 </BackgroundImage>
               </Box>
             </Grid.Col>
@@ -171,10 +173,10 @@ const StockCleaningSale = () => {
 
                         <div className={classes.hover_text}>
                           <Text fz="md" c={"#D00906"} pt={50} fw={700} align="center">
-                            ${product.price}
+                            ${product.discount_price}
                           </Text>
                           <Text fz="md" pb={15} c={"#C1C2C5"} fw={700} align="center" td="line-through">
-                            {product.rating.count}
+                            {product.price}
                           </Text>
                         </div>
                       </div>
