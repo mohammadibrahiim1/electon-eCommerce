@@ -210,12 +210,26 @@ export const Footer = () => {
             </Text>
 
             <div className="flex items-center gap-3 mt-3">
-              <Link to="/">
-                <Image width={148} height={44} fit="contain" src="https://i.ibb.co/XS6kJ1Q/app.png" />
-              </Link>
-              <Link to="/">
-                <Image width={148} height={44} fit="contain" src="https://i.ibb.co/mbrRXDf/play.png " />
-              </Link>
+              {/* <Link to=""> */}
+              <Image
+                component="a"
+                href="https://play.google.com/store/apps"
+                width={148}
+                height={44}
+                fit="contain"
+                src="https://i.ibb.co/XS6kJ1Q/app.png"
+              />
+              {/* </Link> */}
+              {/* <Link to="https://www.apple.com/app-store"> */}
+              <Image
+                component="a"
+                href="https://play.google.com/store/apps"
+                width={148}
+                height={44}
+                fit="contain"
+                src="https://i.ibb.co/mbrRXDf/play.png "
+              />
+              {/* </Link> */}
             </div>
           </div>
         </div>
