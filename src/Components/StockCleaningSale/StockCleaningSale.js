@@ -85,6 +85,15 @@ const useStyles = createStyles((theme) => ({
     ref: getStylesRef("hover_text"),
     transition: "0.5s",
   },
+
+  // countDown_container: {
+  //   width: "58%",
+  //   height: "1%",
+  //   backgroundColor: "#FFF",
+  //   margin: "auto",
+  //   paddingTop: "10px",
+  //   paddingBottom: "10px",
+  // },
 }));
 
 const StockCleaningSale = () => {
@@ -152,12 +161,11 @@ const StockCleaningSale = () => {
                 <BackgroundImage
                   src="https://demo.activeitzone.com/ecommerce/public/uploads/all/SLPVFkT5hIcmqUoQuCTanzBpWjP9QZWGcAeVV0oE.png"
                   radius="sm"
+                  // backgroundSize="cover"
                 >
-                  {/* <Text color="#fff">
-                    BackgroundImage component can be used to add any content on image. It is useful for hero headers and
-                    other similar sections
-                  </Text> */}
-                  <CountDownCircle></CountDownCircle>
+                  <div className={classes.countDown_container}>
+                    <CountDownCircle></CountDownCircle>
+                  </div>
                 </BackgroundImage>
               </Box>
             </Grid.Col>
