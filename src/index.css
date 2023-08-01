@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 body {
+  background-color: #ffffffa1;
   font-family: "Poppins", sans-serif;
   width: 100%;
   overflow-x: hidden;
