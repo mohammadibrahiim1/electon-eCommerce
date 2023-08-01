@@ -1,4 +1,4 @@
-import { BackgroundImage, Box, Grid, Text, createStyles, rem } from "@mantine/core";
+import { BackgroundImage, Box, Grid, Text, createStyles, getStylesRef, rem } from "@mantine/core";
 // import { AlignLeftControl } from "@mantine/tiptap/lib/controls";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -8,10 +8,14 @@ const useStyles = createStyles((theme) => ({
     backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
     borderTop: "1px solid #F1F3F5",
     borderLeft: "1px solid #F1F3F5",
+
+    [`&:hover .${getStylesRef("product_img")}`]: {
+      transform: "scale(1.03)",
+    },
     "&:hover": {
-      boxShadow:
-        " rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px",
-      transition: "0.3s",
+      boxShadow: "0  5px 6px 0 #DCDCDF",
+      transition: " 0.3s",
+      transform: "scale(1)",
     },
   },
 
@@ -53,6 +57,8 @@ const useStyles = createStyles((theme) => ({
     alignItems: "center",
     borderBottom: "1px solid #F1F3F5",
     borderRight: "1px solid #F1F3F5",
+    position: "relative",
+    zIndex: 1,
   },
   product_img: {
     width: "100px",
@@ -60,6 +66,14 @@ const useStyles = createStyles((theme) => ({
     margin: "auto",
     padding: "15px",
     marginTop: "40px",
+    ref: getStylesRef("product_img"),
+    backgroundSize: "cover",
+    transition: "transform 500ms ease",
+  },
+
+  hover_text: {
+    ref: getStylesRef("hover_text"),
+    transition: "all 0.3s ease",
   },
 }));
 
@@ -147,14 +161,13 @@ const StockCleaningSale = () => {
                         <img className={classes.product_img} src={product.image} alt={product.name} />
 
                         <div>
-                          <Text fz="md" c={"#D00906"} pt={75} pb={15} fw={700} align="center">
-                            $168.00
+                          <Text fz="md" c={"#D00906"} pt={75} fw={700} align="center">
+                            ${product.price}
+                          </Text>
+                          <Text className={classes.hover_text} fz="md" pb={15} c={"#D00906"} fw={700} align="center">
+                            {product.rating.count}
                           </Text>
                         </div>
-
-                        {/* <Button radius="xl" style={{ flex: 1 }}>
-                            Rent now
-                          </Button> */}
                       </div>
                     </Link>
 
