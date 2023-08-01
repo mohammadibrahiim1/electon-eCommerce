@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Badge, Button, Card, Group, Image, Text } from "@mantine/core";
 import { addToCart } from "../../redux/actionCreators/productActions";
 import StockCleaningSale from "../StockCleaningSale/StockCleaningSale";
+import TodaysDeal from "../TodaysDeal/TodaysDeal";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -58,7 +59,8 @@ const Home = () => {
           </>
         ))}
       </div> */}
-      <StockCleaningSale></StockCleaningSale>
+      <StockCleaningSale />
+      <TodaysDeal />
     </div>
   );
 };
