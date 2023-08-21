@@ -15,7 +15,11 @@ const Home = () => {
   }
 
   if (isError) {
-    return <Text c={"red"}> something went wrong </Text>;
+    return (
+      <Container align="center" size={"lg"} c={"red"}>
+        something went wrong{" "}
+      </Container>
+    );
   }
 
   return (

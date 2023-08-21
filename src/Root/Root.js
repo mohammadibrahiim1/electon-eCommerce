@@ -1,6 +1,6 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import { Footer } from "../Shared/Footer/Footer";
+// import { Footer } from "../Shared/Footer/Footer";
 import HeaderNav from "../Shared/HeaderNav/HeaderNav";
 
 const Root = () => {
@@ -8,7 +8,7 @@ const Root = () => {
     <div>
       <HeaderNav />
       <Outlet />
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
