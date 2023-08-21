@@ -23,12 +23,12 @@ const DisplayCategories = () => {
   };
   return (
     <div>
-      <div className="w-60">
-        <div>
+      <div>
+        <div className="border">
           <div>
             <Text
               onClick={toggleComputerAndAccessoriesSubMenu}
-              className="block px-4  py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+              className="block px-4  py-4 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer border-b "
               role="menuitem"
             >
               Computer & Accessories
@@ -65,7 +65,7 @@ const DisplayCategories = () => {
           <div>
             <Text
               onClick={toggleWomenFashion}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+              className="block border-b px-4 py-4 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
               role="menuitem"
             >
               Women Clothing & Fashion
@@ -101,7 +101,7 @@ const DisplayCategories = () => {
           <div>
             <Text
               onClick={toggleMenFashion}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+              className="block border-b px-4 py-4 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
               role="menuitem"
             >
               Men Clothing & Fashion
@@ -137,7 +137,7 @@ const DisplayCategories = () => {
           <div>
             <Text
               onClick={toggleAutoAndMotorcyle}
-              className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+              className="block border-b px-4 py-4 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
               role="menuitem"
             >
               Automobile & Motorcycle
@@ -170,16 +170,16 @@ const DisplayCategories = () => {
               </div>
             )}
           </div>
-          <div className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
+          <div className="block border-b px-4 py-4 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
             <Text> Skincare</Text>
           </div>
-          <div className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
+          <div className="block border-b px-4 py-4 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
             <Text> Fragrances</Text>
           </div>
-          <div className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
+          <div className="block border-b px-4 py-4 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
             <Text> Sunglasses</Text>
           </div>
-          <div className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
+          <div className="block px-4 py-4 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900" role="menuitem">
             <Text> Lighting</Text>
           </div>
         </div>
