@@ -12,7 +12,6 @@ import {
   Tooltip,
   Text,
   Menu,
-  UnstyledButton,
   Tabs,
 } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
@@ -20,21 +19,11 @@ import {
   IconArrowsRightLeft,
   IconBellFilled,
   IconChevronDown,
-  IconDeviceMobile,
   IconHeartFilled,
-  IconLogout,
-  IconMessage,
-  IconPlayerPause,
   IconShoppingCartFilled,
-  IconStar,
-  IconSwitchHorizontal,
-  IconTrash,
   IconUserCircle,
 } from "@tabler/icons-react";
-import { IconHeart } from "@tabler/icons-react";
-import { IconSettings } from "@tabler/icons-react";
-import { IconCategoryFilled } from "@tabler/icons-react";
-import { useGetProductQuery } from "../../features/apiSlice";
+
 import { Link } from "react-router-dom";
 
 const HEADER_HEIGHT = rem(60);
@@ -230,7 +219,6 @@ const links = [
   },
 ];
 
-// const user = [{ name: "string", image: "string" }];
 const tabs = [
   {
     link: "/",
@@ -269,11 +257,7 @@ const tabs = [
 const HeaderNav = () => {
   const [opened, { toggle, close }] = useDisclosure(false);
   const [active, setActive] = useState(links[0].link);
-  const { classes, cx, theme } = useStyles();
-
-  const { data } = useGetProductQuery();
-  console.log(data);
-  const products = data?.products;
+  const { classes, cx } = useStyles();
 
   const items = links.map((link) => (
     <a
@@ -288,37 +272,6 @@ const HeaderNav = () => {
       {link.label}
     </a>
   ));
-
-  const categories = [
-    { label: "smartphones" },
-    { label: "laptops" },
-    { label: "fragrances" },
-    { label: "skincare" },
-    { label: "groceries" },
-    { label: "Home decoration" },
-    { label: "furniture" },
-    { label: "tops" },
-    { label: "Women" },
-    { label: "Men" },
-    // { label: "Women shoes" },
-    // { label: "Women dresses" },
-    // { label: "Women watches" },
-    // { label: "Women jewelry" },
-    // { label: "Women bags" },
-    // { label: "Men shirts" },
-    // { label: "Men shoes" },
-    // { label: "Men watches" },
-    // { label: "Men watches" },
-    { label: "Sunglasses" },
-    { label: "Automotive" },
-    { label: "Motorcycle" },
-    { label: "lighting" },
-  ];
-
-  // second header
-  // const { classes, theme, cx } = useStyles();
-  // const [opened, { toggle }] = useDisclosure(false);
-  const [userMenuOpened, setUserMenuOpened] = useState(false);
 
   const secondeHeaderItems = tabs.map((tab) => (
     <a
@@ -335,12 +288,27 @@ const HeaderNav = () => {
   ));
 
   const [isOpen, setIsOpen] = useState(false);
-  const [isSubMenuOpen, setIsSubmenuOpen] = useState(false);
-  const toggleSubMenu = () => {
-    setIsSubmenuOpen(!isSubMenuOpen);
-  };
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
+  };
+
+  const [isComputerAndAccessories, setIsComputerAndAccessories] = useState(false);
+  const [isWomenFashion, setIsWomenFashion] = useState(false);
+  const [isMenFashion, setIsMenFashion] = useState(false);
+  const [isAutoAndMotorcycle, setIsAutoAndMotorcycle] = useState(false);
+
+  const toggleAutoAndMotorcyle = () => {
+    setIsAutoAndMotorcycle(!isAutoAndMotorcycle);
+  };
+  const toggleWomenFashion = () => {
+    setIsWomenFashion(!isWomenFashion);
+  };
+  const toggleMenFashion = () => {
+    setIsMenFashion(!isMenFashion);
+  };
+
+  const toggleComputerAndAccessoriesSubMenu = () => {
+    setIsComputerAndAccessories(!isComputerAndAccessories);
   };
 
   return (
@@ -365,14 +333,11 @@ const HeaderNav = () => {
                   <svg
                     class="h-4 w-4 fill-current"
                     xmlns="http://www.w3.org/2000/svg"
-                    // xmlns:xlink="http://www.w3.org/1999/xlink"
                     version="1.1"
                     id="Capa_1"
                     x="0px"
                     y="0px"
                     viewBox="0 0 56.966 56.966"
-                    // style="enable-background:new 0 0 56.966 56.966;"
-                    // xml:space="preserve"
                     width="512px"
                     height="512px"
                   >
@@ -404,14 +369,7 @@ const HeaderNav = () => {
         <Container size={"1440px"} className={classes.secondHeader}>
           <div className={classes.mainSection}>
             <Group position="apart">
-              <Menu
-                width={260}
-                position="bottom-end"
-                transitionProps={{ transition: "pop-top-right" }}
-                onClose={() => setUserMenuOpened(false)}
-                onOpen={() => setUserMenuOpened(true)}
-                withinPortal
-              >
+              <Menu width={260} position="bottom-end" transitionProps={{ transition: "pop-top-right" }} withinPortal>
                 <div className="relative inline-block  text-left">
                   <Text
                     onClick={toggleDropdown}
@@ -421,18 +379,18 @@ const HeaderNav = () => {
                     <IconChevronDown />
                   </Text>
                   {isOpen && (
-                    <div className="absolute w-[250px]   mt-6 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                    <div className="absolute w-[250px] mt-6 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-[100] ">
                       <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
                         <div>
                           <Text
-                            onClick={toggleSubMenu}
-                            className="block px-4  py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                            onClick={toggleComputerAndAccessoriesSubMenu}
+                            className="block px-4  py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
                             role="menuitem"
                           >
                             Computer & Accessories
                           </Text>
 
-                          {isSubMenuOpen && (
+                          {isComputerAndAccessories && (
                             <div className="absolute right-0 w-36 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
                               <div
                                 className="py-1"
@@ -440,129 +398,182 @@ const HeaderNav = () => {
                                 aria-orientation="vertical"
                                 aria-labelledby="options-menu"
                               >
-                                <a
+                                <Link
                                   href="#"
                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                   role="menuitem"
                                 >
                                   Option 1
-                                </a>
-                                <a
+                                </Link>
+                                <Link
                                   href="#"
                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                   role="menuitem"
                                 >
                                   Option 2
-                                </a>
-                                <a
+                                </Link>
+                                <Link
                                   href="#"
                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                   role="menuitem"
                                 >
                                   Option 3
-                                </a>
+                                </Link>
                               </div>
                             </div>
                           )}
                         </div>
-                        <Link
-                          to="/"
+                        <div>
+                          <Text
+                            onClick={toggleWomenFashion}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                            role="menuitem"
+                          >
+                            Women Clothing & Fashion
+                          </Text>
+                          {isWomenFashion && (
+                            <div className="absolute right-0 w-36 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                              <div
+                                className="py-1"
+                                role="menu"
+                                aria-orientation="vertical"
+                                aria-labelledby="options-menu"
+                              >
+                                <Link
+                                  href="#"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                  role="menuitem"
+                                >
+                                  Option 1
+                                </Link>
+                                <Link
+                                  href="#"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                  role="menuitem"
+                                >
+                                  Option 2
+                                </Link>
+                                <Link
+                                  href="#"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                  role="menuitem"
+                                >
+                                  Option 3
+                                </Link>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                        <div>
+                          <Text
+                            onClick={toggleMenFashion}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                            role="menuitem"
+                          >
+                            Men Clothing & Fashion
+                          </Text>
+                          {isMenFashion && (
+                            <div className="absolute right-0 w-36 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                              <div
+                                className="py-1"
+                                role="menu"
+                                aria-orientation="vertical"
+                                aria-labelledby="options-menu"
+                              >
+                                <Link
+                                  href="#"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                  role="menuitem"
+                                >
+                                  Option 1
+                                </Link>
+                                <Link
+                                  href="#"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                  role="menuitem"
+                                >
+                                  Option 2
+                                </Link>
+                                <Link
+                                  href="#"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                  role="menuitem"
+                                >
+                                  Option 3
+                                </Link>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                        <div>
+                          <Text
+                            onClick={toggleAutoAndMotorcyle}
+                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                            role="menuitem"
+                          >
+                            Automobile & Motorcycle
+                          </Text>
+                          {isAutoAndMotorcycle && (
+                            <div className="absolute right-0 w-36 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                              <div
+                                className="py-1"
+                                role="menu"
+                                aria-orientation="vertical"
+                                aria-labelledby="options-menu"
+                              >
+                                <Link
+                                  href="#"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                  role="menuitem"
+                                >
+                                  Option 1
+                                </Link>
+                                <Link
+                                  href="#"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                  role="menuitem"
+                                >
+                                  Option 2
+                                </Link>
+                                <Link
+                                  href="#"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                  role="menuitem"
+                                >
+                                  Option 3
+                                </Link>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                        <div
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                           role="menuitem"
                         >
-                          Women Clothing & Fashion
-                        </Link>
-                        <Link
-                          to="/"
+                          <Text> Skincare</Text>
+                        </div>
+                        <div
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                           role="menuitem"
                         >
-                          Men Clothing & Fashion
-                        </Link>
-                        <Link
-                          to="/"
+                          <Text> Fragrances</Text>
+                        </div>
+                        <div
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                           role="menuitem"
                         >
-                          Automobile & Motorcycle
-                        </Link>
-                        <Link
-                          to="/"
+                          <Text> Sunglasses</Text>
+                        </div>
+                        <div
                           className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                           role="menuitem"
                         >
-                          Skincare
-                        </Link>
-                        <Link
-                          to="/"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                          role="menuitem"
-                        >
-                          Fragrances
-                        </Link>
-                        <Link
-                          to="/"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                          role="menuitem"
-                        >
-                          Sunglasses
-                        </Link>
-                        <Link
-                          to="/"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                          role="menuitem"
-                        >
-                          Lighting
-                        </Link>
+                          <Text> Lighting</Text>
+                        </div>
                       </div>
                     </div>
                   )}
                 </div>
-                {/* <Menu.Target>
-                  <UnstyledButton className={cx(classes.user, { [classes.userActive]: userMenuOpened })}>
-                    <div className=" flex items-center justify-between gap-12 text-base-100 font-bold">
-                      <Text className="flex items-center text-md">
-                        <IconCategoryFilled size={"1rem"} /> Categories (All)
-                      </Text>
-                      <IconChevronDown size={"1.5rem"} stroke={1.5} />
-                    </div>
-                  </UnstyledButton>
-                </Menu.Target>
-                <Menu.Dropdown>
-                  <Menu.Item
-                    onClick={toggleDropdown}
-                    icon={<IconDeviceMobile size="0.9rem" color={theme.colors.red[6]} stroke={1.5} />}
-                  >
-                    Computer & Accessories
-                  </Menu.Item>
-                  {isOpen && (
-                    <div className="absolute right-0 w-36 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
-                      <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
-                        <a
-                          href="#"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                          role="menuitem"
-                        >
-                          Option 1
-                        </a>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                          role="menuitem"
-                        >
-                          Option 2
-                        </a>
-                        <a
-                          href="#"
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                          role="menuitem"
-                        >
-                          Option 3
-                        </a>
-                      </div>
-                    </div>
-                  )}
-                </Menu.Dropdown> */}
               </Menu>
             </Group>
           </div>
