@@ -20,6 +20,7 @@ import {
   IconArrowsRightLeft,
   IconBellFilled,
   IconChevronDown,
+  IconDeviceMobile,
   IconHeartFilled,
   IconLogout,
   IconMessage,
@@ -34,6 +35,7 @@ import { IconHeart } from "@tabler/icons-react";
 import { IconSettings } from "@tabler/icons-react";
 import { IconCategoryFilled } from "@tabler/icons-react";
 import { useGetProductQuery } from "../../features/apiSlice";
+import { Link } from "react-router-dom";
 
 const HEADER_HEIGHT = rem(60);
 
@@ -296,15 +298,17 @@ const HeaderNav = () => {
     { label: "Home decoration" },
     { label: "furniture" },
     { label: "tops" },
-    { label: "Women shoes" },
-    { label: "Women dresses" },
-    { label: "Women watches" },
-    { label: "Women jewelry" },
-    { label: "Women bags" },
-    { label: "Men shirts" },
-    { label: "Men shoes" },
-    { label: "Men watches" },
-    { label: "Men watches" },
+    { label: "Women" },
+    { label: "Men" },
+    // { label: "Women shoes" },
+    // { label: "Women dresses" },
+    // { label: "Women watches" },
+    // { label: "Women jewelry" },
+    // { label: "Women bags" },
+    // { label: "Men shirts" },
+    // { label: "Men shoes" },
+    // { label: "Men watches" },
+    // { label: "Men watches" },
     { label: "Sunglasses" },
     { label: "Automotive" },
     { label: "Motorcycle" },
@@ -329,6 +333,15 @@ const HeaderNav = () => {
       {tab.label}
     </a>
   ));
+
+  const [isOpen, setIsOpen] = useState(false);
+  const [isSubMenuOpen, setIsSubmenuOpen] = useState(false);
+  const toggleSubMenu = () => {
+    setIsSubmenuOpen(!isSubMenuOpen);
+  };
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <div>
@@ -399,7 +412,113 @@ const HeaderNav = () => {
                 onOpen={() => setUserMenuOpened(true)}
                 withinPortal
               >
-                <Menu.Target>
+                <div className="relative inline-block  text-left">
+                  <Text
+                    onClick={toggleDropdown}
+                    className="text-white font-bold cursor-pointer flex justify-between items-center gap-16 "
+                  >
+                    Categories (All)
+                    <IconChevronDown />
+                  </Text>
+                  {isOpen && (
+                    <div className="absolute w-[250px]   mt-6 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                      <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                        <div>
+                          <Text
+                            onClick={toggleSubMenu}
+                            className="block px-4  py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                            role="menuitem"
+                          >
+                            Computer & Accessories
+                          </Text>
+
+                          {isSubMenuOpen && (
+                            <div className="absolute right-0 w-36 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                              <div
+                                className="py-1"
+                                role="menu"
+                                aria-orientation="vertical"
+                                aria-labelledby="options-menu"
+                              >
+                                <a
+                                  href="#"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                  role="menuitem"
+                                >
+                                  Option 1
+                                </a>
+                                <a
+                                  href="#"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                  role="menuitem"
+                                >
+                                  Option 2
+                                </a>
+                                <a
+                                  href="#"
+                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                                  role="menuitem"
+                                >
+                                  Option 3
+                                </a>
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                        <Link
+                          to="/"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                        >
+                          Women Clothing & Fashion
+                        </Link>
+                        <Link
+                          to="/"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                        >
+                          Men Clothing & Fashion
+                        </Link>
+                        <Link
+                          to="/"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                        >
+                          Automobile & Motorcycle
+                        </Link>
+                        <Link
+                          to="/"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                        >
+                          Skincare
+                        </Link>
+                        <Link
+                          to="/"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                        >
+                          Fragrances
+                        </Link>
+                        <Link
+                          to="/"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                        >
+                          Sunglasses
+                        </Link>
+                        <Link
+                          to="/"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                        >
+                          Lighting
+                        </Link>
+                      </div>
+                    </div>
+                  )}
+                </div>
+                {/* <Menu.Target>
                   <UnstyledButton className={cx(classes.user, { [classes.userActive]: userMenuOpened })}>
                     <div className=" flex items-center justify-between gap-12 text-base-100 font-bold">
                       <Text className="flex items-center text-md">
@@ -410,36 +529,40 @@ const HeaderNav = () => {
                   </UnstyledButton>
                 </Menu.Target>
                 <Menu.Dropdown>
-                  <div>
-                    {products?.map((product) => (
-                      <>
-                        <Menu.Item icon={<IconHeart size="0.9rem" color={theme.colors.red[6]} stroke={1.5} />}>
-                          {product?.category}
-                        </Menu.Item>
-                      </>
-                    ))}
-                  </div>
-
-                  {/* <Menu.Item icon={<IconStar size="0.9rem" color={theme.colors.yellow[6]} stroke={1.5} />}>
-                    Saved posts
+                  <Menu.Item
+                    onClick={toggleDropdown}
+                    icon={<IconDeviceMobile size="0.9rem" color={theme.colors.red[6]} stroke={1.5} />}
+                  >
+                    Computer & Accessories
                   </Menu.Item>
-                  <Menu.Item icon={<IconMessage size="0.9rem" color={theme.colors.blue[6]} stroke={1.5} />}>
-                    Your comments
-                  </Menu.Item>
-
-                  <Menu.Label>Settings</Menu.Label>
-                  <Menu.Item icon={<IconSettings size="0.9rem" stroke={1.5} />}>Account settings</Menu.Item>
-                  <Menu.Item icon={<IconSwitchHorizontal size="0.9rem" stroke={1.5} />}>Change account</Menu.Item>
-                  <Menu.Item icon={<IconLogout size="0.9rem" stroke={1.5} />}>Logout</Menu.Item>
-
-                  <Menu.Divider />
-
-                  <Menu.Label>Danger zone</Menu.Label>
-                  <Menu.Item icon={<IconPlayerPause size="0.9rem" stroke={1.5} />}>Pause subscription</Menu.Item>
-                  <Menu.Item color="red" icon={<IconTrash size="0.9rem" stroke={1.5} />}>
-                    Delete account
-                  </Menu.Item> */}
-                </Menu.Dropdown>
+                  {isOpen && (
+                    <div className="absolute right-0 w-36 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                      <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                        <a
+                          href="#"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                        >
+                          Option 1
+                        </a>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                        >
+                          Option 2
+                        </a>
+                        <a
+                          href="#"
+                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                          role="menuitem"
+                        >
+                          Option 3
+                        </a>
+                      </div>
+                    </div>
+                  )}
+                </Menu.Dropdown> */}
               </Menu>
             </Group>
           </div>

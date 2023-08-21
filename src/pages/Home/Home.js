@@ -4,7 +4,7 @@ import { Container, Loader, Text } from "@mantine/core";
 
 const Home = () => {
   const { data, isLoading, isError } = useGetProductQuery();
-  const products = data;
+  const products = data?.products;
 
   if (isLoading) {
     return (
