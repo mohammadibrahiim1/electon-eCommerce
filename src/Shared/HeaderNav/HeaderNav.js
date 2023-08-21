@@ -33,6 +33,7 @@ import {
 import { IconHeart } from "@tabler/icons-react";
 import { IconSettings } from "@tabler/icons-react";
 import { IconCategoryFilled } from "@tabler/icons-react";
+import { useGetProductQuery } from "../../features/apiSlice";
 
 const HEADER_HEIGHT = rem(60);
 
@@ -268,6 +269,10 @@ const HeaderNav = () => {
   const [active, setActive] = useState(links[0].link);
   const { classes, cx, theme } = useStyles();
 
+  const { data } = useGetProductQuery();
+  console.log(data);
+  const products = data?.products;
+
   const items = links.map((link) => (
     <a
       href={link.link}
@@ -281,6 +286,30 @@ const HeaderNav = () => {
       {link.label}
     </a>
   ));
+
+  const categories = [
+    { label: "smartphones" },
+    { label: "laptops" },
+    { label: "fragrances" },
+    { label: "skincare" },
+    { label: "groceries" },
+    { label: "Home decoration" },
+    { label: "furniture" },
+    { label: "tops" },
+    { label: "Women shoes" },
+    { label: "Women dresses" },
+    { label: "Women watches" },
+    { label: "Women jewelry" },
+    { label: "Women bags" },
+    { label: "Men shirts" },
+    { label: "Men shoes" },
+    { label: "Men watches" },
+    { label: "Men watches" },
+    { label: "Sunglasses" },
+    { label: "Automotive" },
+    { label: "Motorcycle" },
+    { label: "lighting" },
+  ];
 
   // second header
   // const { classes, theme, cx } = useStyles();
@@ -381,10 +410,17 @@ const HeaderNav = () => {
                   </UnstyledButton>
                 </Menu.Target>
                 <Menu.Dropdown>
-                  <Menu.Item icon={<IconHeart size="0.9rem" color={theme.colors.red[6]} stroke={1.5} />}>
-                    Liked posts
-                  </Menu.Item>
-                  <Menu.Item icon={<IconStar size="0.9rem" color={theme.colors.yellow[6]} stroke={1.5} />}>
+                  <div>
+                    {products?.map((product) => (
+                      <>
+                        <Menu.Item icon={<IconHeart size="0.9rem" color={theme.colors.red[6]} stroke={1.5} />}>
+                          {product?.category}
+                        </Menu.Item>
+                      </>
+                    ))}
+                  </div>
+
+                  {/* <Menu.Item icon={<IconStar size="0.9rem" color={theme.colors.yellow[6]} stroke={1.5} />}>
                     Saved posts
                   </Menu.Item>
                   <Menu.Item icon={<IconMessage size="0.9rem" color={theme.colors.blue[6]} stroke={1.5} />}>
@@ -402,7 +438,7 @@ const HeaderNav = () => {
                   <Menu.Item icon={<IconPlayerPause size="0.9rem" stroke={1.5} />}>Pause subscription</Menu.Item>
                   <Menu.Item color="red" icon={<IconTrash size="0.9rem" stroke={1.5} />}>
                     Delete account
-                  </Menu.Item>
+                  </Menu.Item> */}
                 </Menu.Dropdown>
               </Menu>
             </Group>
