@@ -3,19 +3,15 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { ProductsProvider } from "./Components/Context/Context";
-import DataContext from "./Components/DataContext/DataContext";
-// import Context from "./Components/Context/Context";
-// import {ContextProvider} from "./Components/Context/Context";
+import { Provider } from "react-redux";
+import store from "./store/store";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ProductsProvider>
-      <DataContext>
-        <App />
-      </DataContext>
-    </ProductsProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </React.StrictMode>
 );
 
