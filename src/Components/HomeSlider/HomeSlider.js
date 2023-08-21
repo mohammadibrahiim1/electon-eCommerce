@@ -1,10 +1,5 @@
 import React, { useEffect, useState } from "react";
 
-// https://i.ibb.co/0GqcV0G/electon-e-Commerce-slider-img.webp
-// https://i.ibb.co/RHzhf9v/electon-e-Commerce-slider-img-2.webp
-// https://i.ibb.co/sJJZRww/electon-e-Commerce-slider-img-3.webp
-// https://i.ibb.co/hKWyGWt/electon-e-Commerce-slider-img-4.webp
-
 const images = [
   "https://i.ibb.co/0GqcV0G/electon-e-Commerce-slider-img.webp",
   "https://i.ibb.co/RHzhf9v/electon-e-Commerce-slider-img-2.webp",
