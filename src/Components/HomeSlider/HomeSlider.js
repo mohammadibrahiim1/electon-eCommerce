@@ -28,7 +28,7 @@ const HomeSlider = () => {
             <img
               src={imageUrl}
               alt={`Slide ${index + 1}`}
-              className="d-block mw-100 img-fit overflow-hidden h-sm-auto h-md-320px h-lg-460px overflow-hidden"
+              className="d-block mw-100 img-fit  h-sm-auto h-md-320px h-lg-460px overflow-hidden"
             />
           </div>
         ))}

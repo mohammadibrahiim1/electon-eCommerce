@@ -32,6 +32,7 @@ const Home = () => {
           <Grid.Col span={3}>
             <DisplayCategories></DisplayCategories>
           </Grid.Col>
+
           <Grid.Col span={9}>
             <HomeSlider></HomeSlider>
           </Grid.Col>
