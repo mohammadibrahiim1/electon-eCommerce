@@ -1,10 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useGetProductQuery } from "../../features/apiSlice";
 import { Container, Grid, Loader } from "@mantine/core";
 import HomeSlider from "../../Components/HomeSlider/HomeSlider";
 import DisplayCategories from "../../Components/DisplayCategories/DisplayCategories";
 
 const Home = () => {
+  // const [productss, setProductss] = useState();
+  // useEffect(() => {
+  //   fetch(`maindata.json`)
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setProductss(data);
+  //       console.log(data);
+  //     });
+  // }, []);
+
   const { data, isLoading, isError } = useGetProductQuery();
   const products = data?.products;
   console.log(products);
