@@ -1,5 +1,19 @@
-import { createStyles, Text, Container, ActionIcon, Group, rem, Image, Input, Button } from "@mantine/core";
-import { IconBrandYoutube, IconBrandInstagram, IconAt } from "@tabler/icons-react";
+import {
+  createStyles,
+  Text,
+  Container,
+  ActionIcon,
+  Group,
+  rem,
+  Image,
+  Input,
+  Button,
+} from "@mantine/core";
+import {
+  IconBrandYoutube,
+  IconBrandInstagram,
+  IconAt,
+} from "@tabler/icons-react";
 // import { MantineLogo } from "@mantine/ds";
 import { Link } from "react-router-dom";
 import { FaFacebookF, FaLinkedinIn, FaTwitter } from "react-icons/fa";
@@ -62,7 +76,10 @@ const useStyles = createStyles((theme) => ({
     position: "relative",
     textDecoration: " none",
     display: "block",
-    color: theme.colorScheme === "dark" ? theme.colors.dark[1] : theme.colors.gray[0],
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[1]
+        : theme.colors.gray[0],
     fontSize: theme.fontSizes.xs,
     paddingTop: rem(3),
     paddingBottom: rem(3),
@@ -86,10 +103,6 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     justifyContent: "space-between",
     alignItems: "center",
-    // marginTop: theme.spacing.xl,
-    // paddingTop: theme.spacing.xl,
-    // paddingBottom: theme.spacing.xl,
-    // borderTop: `${rem(1)} solid ${theme.colorScheme === "dark" ? theme.colors.dark[4] : theme.colors.gray[2]}`,
 
     [theme.fn.smallerThan("sm")]: {
       flexDirection: "column",
@@ -137,7 +150,11 @@ const dataOne = [
 ];
 const dataTwo = [
   {
-    links: [{ label: "Demo Address" }, { label: "+88 125463112" }, { label: "demo.example@gmail.com" }],
+    links: [
+      { label: "Demo Address" },
+      { label: "+88 125463112" },
+      { label: "demo.example@gmail.com" },
+    ],
   },
 ];
 const dataThree = [
@@ -170,7 +187,13 @@ export const Footer = () => {
 
   const groupsOne = dataOne.map((group) => {
     const links = group.links.map((link, index) => (
-      <Text key={index} className={classes.link} component="a" href={link.link} onClick={() => link.link}>
+      <Text
+        key={index}
+        className={classes.link}
+        component="a"
+        href={link.link}
+        onClick={() => link.link}
+      >
         {link.label}
       </Text>
     ));
@@ -183,7 +206,13 @@ export const Footer = () => {
   });
   const groupsTwo = dataTwo.map((group) => {
     const links = group.links.map((link, index) => (
-      <Text key={index} className={classes.link} component="a" href={link.link} onClick={() => link.link}>
+      <Text
+        key={index}
+        className={classes.link}
+        component="a"
+        href={link.link}
+        onClick={() => link.link}
+      >
         {link.label}
       </Text>
     ));
@@ -196,7 +225,13 @@ export const Footer = () => {
   });
   const groupsThree = dataThree.map((group) => {
     const links = group.links.map((link, index) => (
-      <Text key={index} className={classes.link} component="a" href={link.link} onClick={() => link.link}>
+      <Text
+        key={index}
+        className={classes.link}
+        component="a"
+        href={link.link}
+        onClick={() => link.link}
+      >
         {link.label}
       </Text>
     ));
@@ -209,7 +244,13 @@ export const Footer = () => {
   });
   const groupsFour = dataFour.map((group) => {
     const links = group.links.map((link, index) => (
-      <Text key={index} className={classes.link} component="a" href={link.link} onClick={() => link.link}>
+      <Text
+        key={index}
+        className={classes.link}
+        component="a"
+        href={link.link}
+        onClick={() => link.link}
+      >
         {link.label}
       </Text>
     ));
@@ -246,7 +287,8 @@ export const Footer = () => {
               <Input.Wrapper
                 description={
                   <Text size={"sm"} c={"#FFF"}>
-                    Subscribe to our newsletter for regular updates about Offers, Coupons & more
+                    Subscribe to our newsletter for regular updates about
+                    Offers, Coupons & more
                   </Text>
                 }
               >
@@ -260,7 +302,12 @@ export const Footer = () => {
                   radius={0}
                 />
               </Input.Wrapper>
-              <Button mt={22} className={classes.subscribe_button} w={"200px"} size="md">
+              <Button
+                mt={22}
+                className={classes.subscribe_button}
+                w={"200px"}
+                size="md"
+              >
                 Subscribe
               </Button>
             </div>
@@ -326,7 +373,7 @@ export const Footer = () => {
       <div className="bg-[#17171F] py-12">
         <div className={classes.footer_bottom}>
           <Text color="#FFF" size="md">
-            © Active eCommerce CMS 2021
+            © Next Cart 2021
           </Text>
 
           <Image

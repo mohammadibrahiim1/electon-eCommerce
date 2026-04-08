@@ -23,8 +23,8 @@ import {
   IconShoppingCartFilled,
   IconUserCircle,
 } from "@tabler/icons-react";
-
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const HEADER_HEIGHT = rem(60);
 
@@ -76,7 +76,10 @@ const useStyles = createStyles((theme) => ({
     padding: `${rem(8)} ${rem(12)}`,
     borderRadius: theme.radius.sm,
     textDecoration: "none",
-    color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.gray[7],
+    color:
+      theme.colorScheme === "dark"
+        ? theme.colors.dark[0]
+        : theme.colors.gray[7],
     fontSize: theme.fontSizes.sm,
     fontWeight: 500,
 
@@ -92,7 +95,10 @@ const useStyles = createStyles((theme) => ({
 
   linkActive: {
     "&, &:hover": {
-      color: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.red[9],
+      color:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[6]
+          : theme.colors.red[9],
     },
   },
 
@@ -108,7 +114,8 @@ const useStyles = createStyles((theme) => ({
   },
 
   secondHeaderSection: {
-    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.red[8],
+    backgroundColor:
+      theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.red[8],
   },
 
   mainSection: {
@@ -137,7 +144,8 @@ const useStyles = createStyles((theme) => ({
   // },
 
   userActive: {
-    backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
+    backgroundColor:
+      theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
   },
 
   tabs: {
@@ -160,7 +168,10 @@ const useStyles = createStyles((theme) => ({
     fontSize: theme.fontSizes.sm,
 
     "&:hover": {
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.red[9],
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[6]
+          : theme.colors.red[9],
     },
 
     [theme.fn.smallerThan("sm")]: {
@@ -169,14 +180,21 @@ const useStyles = createStyles((theme) => ({
     },
 
     "&[data-active]": {
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
-      borderColor: theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.colors.gray[2],
+      backgroundColor:
+        theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
+      borderColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[7]
+          : theme.colors.gray[2],
     },
   },
 
   tabActive: {
     "&, &:hover": {
-      backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.red[9],
+      backgroundColor:
+        theme.colorScheme === "dark"
+          ? theme.colors.dark[6]
+          : theme.colors.red[9],
     },
   },
 }));
@@ -214,7 +232,7 @@ const links = [
     label: "Login",
   },
   {
-    link: "/signUp",
+    link: "/register",
     label: "Register",
   },
 ];
@@ -259,23 +277,28 @@ const HeaderNav = () => {
   const [active, setActive] = useState(links[0].link);
   const { classes, cx } = useStyles();
 
-  const items = links.map((link) => (
-    <a
-      href={link.link}
-      className={cx(classes.link, { [classes.linkActive]: active === link.link })}
-      onClick={(event) => {
-        event.preventDefault();
+  const { user } = useSelector((state) => state?.auth);
+
+  console.log(user);
+
+  const items = links?.map((link) => (
+    <Link
+      to={link?.link}
+      className={cx(classes.link, {
+        [classes.linkActive]: active === link.link,
+      })}
+      onClick={() => {
         setActive(link.link);
         close();
       }}
     >
       {link.label}
-    </a>
+    </Link>
   ));
 
   const secondeHeaderItems = tabs.map((tab) => (
-    <a
-      href={tab.link}
+    <Link
+      to={tab.link}
       className={cx(classes.tab, { [classes.tabActive]: active === tab.link })}
       onClick={(event) => {
         event.preventDefault();
@@ -284,7 +307,7 @@ const HeaderNav = () => {
       }}
     >
       {tab.label}
-    </a>
+    </Link>
   ));
 
   const [isOpen, setIsOpen] = useState(false);
@@ -292,7 +315,8 @@ const HeaderNav = () => {
     setIsOpen(!isOpen);
   };
 
-  const [isComputerAndAccessories, setIsComputerAndAccessories] = useState(false);
+  const [isComputerAndAccessories, setIsComputerAndAccessories] =
+    useState(false);
   const [isWomenFashion, setIsWomenFashion] = useState(false);
   const [isMenFashion, setIsMenFashion] = useState(false);
   const [isAutoAndMotorcycle, setIsAutoAndMotorcycle] = useState(false);
@@ -317,7 +341,7 @@ const HeaderNav = () => {
         {/* first header */}
         <Header height={HEADER_HEIGHT} className={classes.root}>
           <section className={classes.header}>
-            <Text fw={700} c={"red"} component="a" href="/">
+            <Text fw={700} c={"red"} component="a" to="/">
               Electon eCommerce
             </Text>
 
@@ -351,9 +375,18 @@ const HeaderNav = () => {
               {items}
             </Group>
 
-            <Burger opened={opened} onClick={toggle} className={classes.burger} size="sm" />
+            <Burger
+              opened={opened}
+              onClick={toggle}
+              className={classes.burger}
+              size="sm"
+            />
 
-            <Transition transition="pop-top-right" duration={200} mounted={opened}>
+            <Transition
+              transition="pop-top-right"
+              duration={200}
+              mounted={opened}
+            >
               {(styles) => (
                 <Paper className={classes.dropdown} withBorder style={styles}>
                   {items}
@@ -369,29 +402,39 @@ const HeaderNav = () => {
         <Container size={"1440px"} className={classes.secondHeader}>
           <div className={classes.mainSection}>
             <Group position="apart">
-              <Menu width={260} position="bottom-end" transitionProps={{ transition: "pop-top-right" }} withinPortal>
-                <div className="relative inline-block  text-left">
+              <Menu
+                width={260}
+                position="bottom-end"
+                transitionProps={{ transition: "pop-top-right" }}
+                withinPortal
+              >
+                <div className="relative inline-block text-left">
                   <Text
                     onClick={toggleDropdown}
-                    className="text-white font-bold cursor-pointer flex justify-between items-center gap-16 "
+                    className="flex items-center justify-between gap-16 font-bold text-white cursor-pointer "
                   >
                     Categories (All)
                     <IconChevronDown />
                   </Text>
                   {isOpen && (
                     <div className="absolute w-[250px] mt-6 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-[100] ">
-                      <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+                      <div
+                        className="py-1"
+                        role="menu"
+                        aria-orientation="vertical"
+                        aria-labelledby="options-menu"
+                      >
                         <div>
                           <Text
                             onClick={toggleComputerAndAccessoriesSubMenu}
-                            className="block px-4  py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 cursor-pointer"
+                            className="block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-gray-100 hover:text-gray-900"
                             role="menuitem"
                           >
                             Computer & Accessories
                           </Text>
 
                           {isComputerAndAccessories && (
-                            <div className="absolute right-0 w-36 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                            <div className="absolute right-0 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg w-36 ring-1 ring-black ring-opacity-5">
                               <div
                                 className="py-1"
                                 role="menu"
@@ -399,21 +442,21 @@ const HeaderNav = () => {
                                 aria-labelledby="options-menu"
                               >
                                 <Link
-                                  href="#"
+                                  to="#"
                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                   role="menuitem"
                                 >
                                   Option 1
                                 </Link>
                                 <Link
-                                  href="#"
+                                  to="#"
                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                   role="menuitem"
                                 >
                                   Option 2
                                 </Link>
                                 <Link
-                                  href="#"
+                                  to="#"
                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                   role="menuitem"
                                 >
@@ -432,7 +475,7 @@ const HeaderNav = () => {
                             Women Clothing & Fashion
                           </Text>
                           {isWomenFashion && (
-                            <div className="absolute right-0 w-36 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                            <div className="absolute right-0 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg w-36 ring-1 ring-black ring-opacity-5">
                               <div
                                 className="py-1"
                                 role="menu"
@@ -440,21 +483,21 @@ const HeaderNav = () => {
                                 aria-labelledby="options-menu"
                               >
                                 <Link
-                                  href="#"
+                                  to="#"
                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                   role="menuitem"
                                 >
                                   Option 1
                                 </Link>
                                 <Link
-                                  href="#"
+                                  to="#"
                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                   role="menuitem"
                                 >
                                   Option 2
                                 </Link>
                                 <Link
-                                  href="#"
+                                  to="#"
                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                   role="menuitem"
                                 >
@@ -473,7 +516,7 @@ const HeaderNav = () => {
                             Men Clothing & Fashion
                           </Text>
                           {isMenFashion && (
-                            <div className="absolute right-0 w-36 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                            <div className="absolute right-0 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg w-36 ring-1 ring-black ring-opacity-5">
                               <div
                                 className="py-1"
                                 role="menu"
@@ -481,21 +524,21 @@ const HeaderNav = () => {
                                 aria-labelledby="options-menu"
                               >
                                 <Link
-                                  href="#"
+                                  to="#"
                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                   role="menuitem"
                                 >
                                   Option 1
                                 </Link>
                                 <Link
-                                  href="#"
+                                  to="#"
                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                   role="menuitem"
                                 >
                                   Option 2
                                 </Link>
                                 <Link
-                                  href="#"
+                                  to="#"
                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                   role="menuitem"
                                 >
@@ -514,7 +557,7 @@ const HeaderNav = () => {
                             Automobile & Motorcycle
                           </Text>
                           {isAutoAndMotorcycle && (
-                            <div className="absolute right-0 w-36 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5">
+                            <div className="absolute right-0 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg w-36 ring-1 ring-black ring-opacity-5">
                               <div
                                 className="py-1"
                                 role="menu"
@@ -522,21 +565,21 @@ const HeaderNav = () => {
                                 aria-labelledby="options-menu"
                               >
                                 <Link
-                                  href="#"
+                                  to="#"
                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                   role="menuitem"
                                 >
                                   Option 1
                                 </Link>
                                 <Link
-                                  href="#"
+                                  to="#"
                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                   role="menuitem"
                                 >
                                   Option 2
                                 </Link>
                                 <Link
-                                  href="#"
+                                  to="#"
                                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                                   role="menuitem"
                                 >
@@ -591,7 +634,7 @@ const HeaderNav = () => {
             </Tabs>
           </div>
           <div>
-            <div className="flex justify-evenly items-center gap-2 text-base-100 font-bold ">
+            <div className="flex items-center gap-2 font-bold justify-evenly text-base-100 ">
               <IconShoppingCartFilled />
               <Text>$0.00 (0 items) </Text>
             </div>
