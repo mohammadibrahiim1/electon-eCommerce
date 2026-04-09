@@ -1,647 +1,202 @@
-import React from "react";
-import { useState } from "react";
-import {
-  createStyles,
-  Header,
-  Container,
-  Group,
-  Burger,
-  Paper,
-  Transition,
-  rem,
-  Tooltip,
-  Text,
-  Menu,
-  Tabs,
-} from "@mantine/core";
-import { useDisclosure } from "@mantine/hooks";
-import {
-  IconArrowsRightLeft,
-  IconBellFilled,
-  IconChevronDown,
-  IconHeartFilled,
-  IconShoppingCartFilled,
-  IconUserCircle,
-} from "@tabler/icons-react";
+import React, { useState } from "react";
+import { useSelector, } from "react-redux";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-
-const HEADER_HEIGHT = rem(60);
-
-const useStyles = createStyles((theme) => ({
-  root: {
-    position: "relative",
-    zIndex: 1,
-  },
-
-  dropdown: {
-    position: "absolute",
-    top: HEADER_HEIGHT,
-    left: 0,
-    right: 0,
-    zIndex: 0,
-    borderTopRightRadius: 0,
-    borderTopLeftRadius: 0,
-    borderTopWidth: 0,
-    overflow: "hidden",
-
-    [theme.fn.largerThan("sm")]: {
-      display: "none",
-    },
-  },
-
-  header: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    height: "100%",
-  },
-
-  links: {
-    [theme.fn.smallerThan("sm")]: {
-      display: "none",
-    },
-  },
-
-  burger: {
-    [theme.fn.largerThan("sm")]: {
-      display: "none",
-    },
-  },
-
-  link: {
-    // color: "#FFF",
-    display: "block",
-    lineHeight: 1,
-    padding: `${rem(8)} ${rem(12)}`,
-    borderRadius: theme.radius.sm,
-    textDecoration: "none",
-    color:
-      theme.colorScheme === "dark"
-        ? theme.colors.dark[0]
-        : theme.colors.gray[7],
-    fontSize: theme.fontSizes.sm,
-    fontWeight: 500,
-
-    // "&:hover": {
-    //   backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.gray[0],
-    // },
-
-    [theme.fn.smallerThan("sm")]: {
-      borderRadius: 0,
-      padding: theme.spacing.md,
-    },
-  },
-
-  linkActive: {
-    "&, &:hover": {
-      color:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.red[9],
-    },
-  },
-
-  secondHeader: {
-    display: "flex",
-    justifyContent: "space-between",
-    alignItems: "center",
-    gap: "12px",
-
-    // backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.red[8],
-    // borderBottom: `${rem(1)} solid ${theme.colorScheme === "dark" ? "transparent" : theme.colors.gray[2]}`,
-    // marginBottom: rem(120),
-  },
-
-  secondHeaderSection: {
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[6] : theme.colors.red[8],
-  },
-
-  mainSection: {
-    paddingBottom: theme.spacing.sm,
-  },
-
-  user: {
-    color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.black,
-    padding: `${theme.spacing.xs} ${theme.spacing.sm}`,
-    borderRadius: theme.radius.sm,
-    transition: "background-color 100ms ease",
-
-    // "&:hover": {
-    //   backgroundColor: theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
-    // },
-
-    [theme.fn.smallerThan("xs")]: {
-      display: "none",
-    },
-  },
-
-  // burger: {
-  //   [theme.fn.largerThan("xs")]: {
-  //     display: "none",
-  //   },
-  // },
-
-  userActive: {
-    backgroundColor:
-      theme.colorScheme === "dark" ? theme.colors.dark[8] : theme.white,
-  },
-
-  tabs: {
-    [theme.fn.smallerThan("sm")]: {
-      display: "none",
-    },
-  },
-
-  tabsList: {
-    borderBottom: "0 !important",
-  },
-
-  tab: {
-    fontWeight: 600,
-    display: "block",
-    padding: `${rem(18)}`,
-    textDecoration: "none",
-    // color: theme.colorScheme === "dark" ? theme.colors.dark[0] : theme.colors.gray[2],
-    color: "#FFF",
-    fontSize: theme.fontSizes.sm,
-
-    "&:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.red[9],
-    },
-
-    [theme.fn.smallerThan("sm")]: {
-      borderRadius: 0,
-      padding: theme.spacing.md,
-    },
-
-    "&[data-active]": {
-      backgroundColor:
-        theme.colorScheme === "dark" ? theme.colors.dark[7] : theme.white,
-      borderColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[7]
-          : theme.colors.gray[2],
-    },
-  },
-
-  tabActive: {
-    "&, &:hover": {
-      backgroundColor:
-        theme.colorScheme === "dark"
-          ? theme.colors.dark[6]
-          : theme.colors.red[9],
-    },
-  },
-}));
-const links = [
-  {
-    link: "/compare",
-    label: (
-      <Tooltip label="compare">
-        <IconArrowsRightLeft stroke={0.75} />
-      </Tooltip>
-    ),
-  },
-  {
-    link: "/wishlist",
-    label: (
-      <Tooltip label="wishlist">
-        <IconHeartFilled stroke={0.75} />
-      </Tooltip>
-    ),
-  },
-  {
-    link: "/notification",
-    label: (
-      <Tooltip label="notification">
-        <IconBellFilled stroke={0.75} />
-      </Tooltip>
-    ),
-  },
-  {
-    link: "/profile",
-    label: <IconUserCircle size={"2rem"} stroke={0.75} />,
-  },
-  {
-    link: "/login",
-    label: "Login",
-  },
-  {
-    link: "/register",
-    label: "Register",
-  },
-];
-
-const tabs = [
-  {
-    link: "/",
-    label: "Home",
-  },
-  {
-    link: "/flashSale",
-    label: "Flash Sale",
-  },
-  {
-    link: "/blogs",
-    label: "Blogs",
-  },
-  {
-    link: "/allBrands",
-    label: "All Brands",
-  },
-  {
-    link: "/allCategories",
-    label: "All Categories",
-  },
-  {
-    link: "/allSellers",
-    label: "All Sellers",
-  },
-  {
-    link: "/coupons",
-    label: "Coupons",
-  },
-  {
-    link: "/todaysDeal",
-    label: "Todays Deal",
-  },
-];
+import {
+  Search,
+  ShoppingCart,
+  LogOut,
+  LayoutDashboard,
+  Menu,
+  X,
+  ChevronDown
+} from "lucide-react";
 
 const HeaderNav = () => {
-  const [opened, { toggle, close }] = useDisclosure(false);
-  const [active, setActive] = useState(links[0].link);
-  const { classes, cx } = useStyles();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
 
   const { user } = useSelector((state) => state?.auth);
 
-  console.log(user);
 
-  const items = links?.map((link) => (
-    <Link
-      to={link?.link}
-      className={cx(classes.link, {
-        [classes.linkActive]: active === link.link,
-      })}
-      onClick={() => {
-        setActive(link.link);
-        close();
-      }}
-    >
-      {link.label}
-    </Link>
-  ));
+  const cartItems = [
+    { id: 1, name: "Essence Mascara", price: 9.99, qty: 1 },
+  ];
+  const cartTotal = cartItems.reduce((acc, item) => acc + item.price, 0);
 
-  const secondeHeaderItems = tabs.map((tab) => (
-    <Link
-      to={tab.link}
-      className={cx(classes.tab, { [classes.tabActive]: active === tab.link })}
-      onClick={(event) => {
-        event.preventDefault();
-        setActive(tab.link);
-        close();
-      }}
-    >
-      {tab.label}
-    </Link>
-  ));
-
-  const [isOpen, setIsOpen] = useState(false);
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const [isComputerAndAccessories, setIsComputerAndAccessories] =
-    useState(false);
-  const [isWomenFashion, setIsWomenFashion] = useState(false);
-  const [isMenFashion, setIsMenFashion] = useState(false);
-  const [isAutoAndMotorcycle, setIsAutoAndMotorcycle] = useState(false);
-
-  const toggleAutoAndMotorcyle = () => {
-    setIsAutoAndMotorcycle(!isAutoAndMotorcycle);
-  };
-  const toggleWomenFashion = () => {
-    setIsWomenFashion(!isWomenFashion);
-  };
-  const toggleMenFashion = () => {
-    setIsMenFashion(!isMenFashion);
-  };
-
-  const toggleComputerAndAccessoriesSubMenu = () => {
-    setIsComputerAndAccessories(!isComputerAndAccessories);
-  };
+  const navLinks = [
+    { label: "Home", href: "/" },
+    { label: "Home2", href: "/home2" },
+    { label: "Shop", href: "/shop" },
+    { label: "Blogs", href: "/blogs" },
+    { label: "Offer", href: "/flashSale" },
+  ];
 
   return (
-    <div>
-      <Container size={"1440px"}>
-        {/* first header */}
-        <Header height={HEADER_HEIGHT} className={classes.root}>
-          <section className={classes.header}>
-            <Text fw={700} c={"red"} component="a" to="/">
-              Electon eCommerce
-            </Text>
+    <nav className="sticky top-0 z-50 w-full bg-white border-b border-[#E9E9E7] font-sans text-[#37352F]">
+      <div className="container px-4 mx-auto">
+        <div className="flex items-center justify-between h-16 gap-4">
 
-            <div className="lg:w-1/2 sm:w-2/12 md:w-2/6">
-              <div class="relative text-gray-600 border rounded-full  ">
-                <input
-                  type="search"
-                  name="search"
-                  placeholder="Search"
-                  class="bg-white h-10 px-5 pr-10 rounded-full text-sm focus:outline-none"
-                />
-                <button type="submit" class="absolute right-0 top-0 mt-3 mr-4">
-                  <svg
-                    class="h-4 w-4 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    version="1.1"
-                    id="Capa_1"
-                    x="0px"
-                    y="0px"
-                    viewBox="0 0 56.966 56.966"
-                    width="512px"
-                    height="512px"
-                  >
-                    <path d="M55.146,51.887L41.588,37.786c3.486-4.144,5.396-9.358,5.396-14.786c0-12.682-10.318-23-23-23s-23,10.318-23,23  s10.318,23,23,23c4.761,0,9.298-1.436,13.177-4.162l13.661,14.208c0.571,0.593,1.339,0.92,2.162,0.92  c0.779,0,1.518-0.297,2.079-0.837C56.255,54.982,56.293,53.08,55.146,51.887z M23.984,6c9.374,0,17,7.626,17,17s-7.626,17-17,17  s-17-7.626-17-17S14.61,6,23.984,6z" />
-                  </svg>
-                </button>
+          {/* 1. Logo */}
+          <Link to="/" className="flex items-center gap-2 transition-opacity hover:opacity-80">
+            <div className="w-8 h-8 bg-[#37352F] rounded-md flex items-center justify-center">
+              <span className="text-xl font-bold text-white">N</span>
+            </div>
+            <span className="hidden text-lg font-bold tracking-tight sm:block">NextCart</span>
+          </Link>
+
+          {/* 2. Search Bar (Notion Style) */}
+          <div className="flex-1 hidden max-w-xl md:block">
+            <div className="relative group">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[#ADADA7] group-focus-within:text-[#37352F]" size={16} />
+              <input
+                type="text"
+                placeholder="Search products, brands..."
+                className="w-full bg-[#F7F7F5] border border-[#E9E9E7] rounded-lg py-2 pl-10 pr-4 text-sm focus:outline-none focus:bg-white focus:ring-2 focus:ring-[#2EAADC]/20 transition-all placeholder-[#ADADA7]"
+              />
+            </div>
+          </div>
+
+          {/* 3. Right Actions (Cart & Profile) */}
+          <div className="flex items-center gap-2">
+
+            {/* Nav Links - Desktop */}
+            <div className="items-center hidden gap-1 mr-4 lg:flex">
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="px-3 py-1.5 text-sm font-medium rounded-md hover:bg-[#F1F1EF] transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ))}
+            </div>
+
+            {/* Cart Dropdown */}
+            <div className="dropdown dropdown-end">
+              <label tabIndex={0} className="btn btn-ghost btn-sm btn-circle hover:bg-[#F1F1EF]">
+                <div className="indicator">
+                  <ShoppingCart size={20} strokeWidth={1.5} />
+                  {cartItems.length > 0 && (
+                    <span className="text-white bg-blue-600 border-none badge badge-xs indicator-item">
+                      {cartItems.length}
+                    </span>
+                  )}
+                </div>
+              </label>
+              <div tabIndex={0} className="mt-3 z-[1] card card-compact dropdown-content w-72 bg-white border border-[#E9E9E7] shadow-xl shadow-black/5">
+                <div className="p-4 card-body">
+                  <span className="font-bold text-sm uppercase tracking-wider text-[#787774]">Cart Summary</span>
+                  <div className="py-2">
+                    {cartItems.length > 0 ? (
+                      cartItems.map(item => (
+                        <div key={item.id} className="flex justify-between py-1 text-sm border-b border-gray-50">
+                          <span>{item.name}</span>
+                          <span className="font-bold">${item.price}</span>
+                        </div>
+                      ))
+                    ) : (
+                      <p className="text-[#ADADA7] italic text-sm py-4">Your cart is empty.</p>
+                    )}
+                  </div>
+                  <div className="flex items-center justify-between pt-2 text-base font-bold">
+                    <span>Total:</span>
+                    <span>${cartTotal.toFixed(2)}</span>
+                  </div>
+                  <div className="mt-4 card-actions">
+                    <button className="btn btn-block bg-[#37352F] hover:bg-black text-white border-none rounded-lg btn-sm normal-case">
+                      Checkout
+                    </button>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <Group spacing={5} className={classes.links}>
-              {items}
-            </Group>
+            {/* Auth/Profile Section */}
+            {user ? (
+              <div className="dropdown dropdown-end">
+                <label tabIndex={0} className="flex items-center gap-2 pl-2 pr-1 py-1 rounded-full cursor-pointer hover:bg-[#F1F1EF] transition-all border border-transparent hover:border-[#E9E9E7]">
+                  <div className="flex items-center justify-center w-8 h-8 text-xs font-bold text-blue-700 bg-blue-100 rounded-full">
+                    {user?.name?.charAt(0) || "U"}
+                  </div>
+                  <ChevronDown size={14} className="text-[#ADADA7]" />
+                </label>
+                <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow-xl shadow-black/5 border border-[#E9E9E7] dropdown-content bg-white rounded-xl w-56 text-sm">
+                  <li className="px-3 py-2 border-b border-[#F1F1EF] mb-1">
+                    <p className="font-bold truncate">{user?.name || "User Account"}</p>
+                    <p className="text-[11px] text-[#787774] truncate">{user?.email}</p>
+                  </li>
+                  <li>
+                    <Link to="/profile" className="flex items-center gap-2 p-2 rounded-lg hover:bg-[#F1F1EF]">
+                      <LayoutDashboard size={16} /> Dashboard
+                    </Link>
+                  </li>
+                  <li>
+                    <button className="flex items-center w-full gap-2 p-2 text-red-600 rounded-lg hover:bg-red-50">
+                      <LogOut size={16} /> Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <div className="flex items-center gap-1">
+                <Link to="/login" className="px-3 py-1.5 text-sm font-semibold rounded-md hover:bg-[#F1F1EF] transition-all">
+                  Log in
+                </Link>
+                <Link to="/register" className="px-3 py-1.5 text-sm font-semibold bg-[#37352F] text-white rounded-md hover:bg-black transition-all hidden sm:block">
+                  Sign up
+                </Link>
+              </div>
+            )}
 
-            <Burger
-              opened={opened}
-              onClick={toggle}
-              className={classes.burger}
-              size="sm"
-            />
-
-            <Transition
-              transition="pop-top-right"
-              duration={200}
-              mounted={opened}
+            {/* Mobile Menu Button */}
+            <button
+              className="lg:hidden btn btn-ghost btn-sm btn-circle hover:bg-[#F1F1EF]"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
-              {(styles) => (
-                <Paper className={classes.dropdown} withBorder style={styles}>
-                  {items}
-                </Paper>
-              )}
-            </Transition>
-          </section>
-        </Header>
+              {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </div>
 
-        {/* second header */}
-      </Container>
-      <section className={classes.secondHeaderSection}>
-        <Container size={"1440px"} className={classes.secondHeader}>
-          <div className={classes.mainSection}>
-            <Group position="apart">
-              <Menu
-                width={260}
-                position="bottom-end"
-                transitionProps={{ transition: "pop-top-right" }}
-                withinPortal
-              >
-                <div className="relative inline-block text-left">
-                  <Text
-                    onClick={toggleDropdown}
-                    className="flex items-center justify-between gap-16 font-bold text-white cursor-pointer "
-                  >
-                    Categories (All)
-                    <IconChevronDown />
-                  </Text>
-                  {isOpen && (
-                    <div className="absolute w-[250px] mt-6 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-[100] ">
-                      <div
-                        className="py-1"
-                        role="menu"
-                        aria-orientation="vertical"
-                        aria-labelledby="options-menu"
-                      >
-                        <div>
-                          <Text
-                            onClick={toggleComputerAndAccessoriesSubMenu}
-                            className="block px-4 py-2 text-sm text-gray-700 cursor-pointer hover:bg-gray-100 hover:text-gray-900"
-                            role="menuitem"
-                          >
-                            Computer & Accessories
-                          </Text>
-
-                          {isComputerAndAccessories && (
-                            <div className="absolute right-0 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg w-36 ring-1 ring-black ring-opacity-5">
-                              <div
-                                className="py-1"
-                                role="menu"
-                                aria-orientation="vertical"
-                                aria-labelledby="options-menu"
-                              >
-                                <Link
-                                  to="#"
-                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                  role="menuitem"
-                                >
-                                  Option 1
-                                </Link>
-                                <Link
-                                  to="#"
-                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                  role="menuitem"
-                                >
-                                  Option 2
-                                </Link>
-                                <Link
-                                  to="#"
-                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                  role="menuitem"
-                                >
-                                  Option 3
-                                </Link>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                        <div>
-                          <Text
-                            onClick={toggleWomenFashion}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                            role="menuitem"
-                          >
-                            Women Clothing & Fashion
-                          </Text>
-                          {isWomenFashion && (
-                            <div className="absolute right-0 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg w-36 ring-1 ring-black ring-opacity-5">
-                              <div
-                                className="py-1"
-                                role="menu"
-                                aria-orientation="vertical"
-                                aria-labelledby="options-menu"
-                              >
-                                <Link
-                                  to="#"
-                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                  role="menuitem"
-                                >
-                                  Option 1
-                                </Link>
-                                <Link
-                                  to="#"
-                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                  role="menuitem"
-                                >
-                                  Option 2
-                                </Link>
-                                <Link
-                                  to="#"
-                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                  role="menuitem"
-                                >
-                                  Option 3
-                                </Link>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                        <div>
-                          <Text
-                            onClick={toggleMenFashion}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                            role="menuitem"
-                          >
-                            Men Clothing & Fashion
-                          </Text>
-                          {isMenFashion && (
-                            <div className="absolute right-0 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg w-36 ring-1 ring-black ring-opacity-5">
-                              <div
-                                className="py-1"
-                                role="menu"
-                                aria-orientation="vertical"
-                                aria-labelledby="options-menu"
-                              >
-                                <Link
-                                  to="#"
-                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                  role="menuitem"
-                                >
-                                  Option 1
-                                </Link>
-                                <Link
-                                  to="#"
-                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                  role="menuitem"
-                                >
-                                  Option 2
-                                </Link>
-                                <Link
-                                  to="#"
-                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                  role="menuitem"
-                                >
-                                  Option 3
-                                </Link>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                        <div>
-                          <Text
-                            onClick={toggleAutoAndMotorcyle}
-                            className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                            role="menuitem"
-                          >
-                            Automobile & Motorcycle
-                          </Text>
-                          {isAutoAndMotorcycle && (
-                            <div className="absolute right-0 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg w-36 ring-1 ring-black ring-opacity-5">
-                              <div
-                                className="py-1"
-                                role="menu"
-                                aria-orientation="vertical"
-                                aria-labelledby="options-menu"
-                              >
-                                <Link
-                                  to="#"
-                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                  role="menuitem"
-                                >
-                                  Option 1
-                                </Link>
-                                <Link
-                                  to="#"
-                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                  role="menuitem"
-                                >
-                                  Option 2
-                                </Link>
-                                <Link
-                                  to="#"
-                                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                  role="menuitem"
-                                >
-                                  Option 3
-                                </Link>
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                        <div
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                          role="menuitem"
-                        >
-                          <Text> Skincare</Text>
-                        </div>
-                        <div
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                          role="menuitem"
-                        >
-                          <Text> Fragrances</Text>
-                        </div>
-                        <div
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                          role="menuitem"
-                        >
-                          <Text> Sunglasses</Text>
-                        </div>
-                        <div
-                          className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                          role="menuitem"
-                        >
-                          <Text> Lighting</Text>
-                        </div>
-                      </div>
-                    </div>
-                  )}
+        {/* Mobile Navigation Menu */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden py-4 border-t border-[#F1F1EF] bg-white animate-in slide-in-from-top duration-300">
+            <div className="flex flex-col gap-1 px-2">
+              <div className="px-3 pb-3">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-[#ADADA7]" size={14} />
+                  <input
+                    type="text"
+                    placeholder="Search..."
+                    className="w-full bg-[#F7F7F5] border border-[#E9E9E7] rounded-lg py-1.5 pl-9 pr-4 text-sm outline-none"
+                  />
                 </div>
-              </Menu>
-            </Group>
-          </div>
-          <div>
-            <Tabs
-              defaultValue="Home"
-              variant="outline"
-              classNames={{
-                root: classes.tabs,
-                tabsList: classes.tabsList,
-                tab: classes.tab,
-              }}
-            >
-              <Tabs.List>{secondeHeaderItems}</Tabs.List>
-            </Tabs>
-          </div>
-          <div>
-            <div className="flex items-center gap-2 font-bold justify-evenly text-base-100 ">
-              <IconShoppingCartFilled />
-              <Text>$0.00 (0 items) </Text>
+              </div>
+              {navLinks.map((link) => (
+                <Link
+                  key={link.label}
+                  to={link.href}
+                  className="px-4 py-3 text-base font-medium rounded-lg hover:bg-[#F1F1EF]"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              {!user && (
+                <Link
+                  to="/register"
+                  className="mx-3 mt-2 px-4 py-2 text-center text-white bg-[#37352F] rounded-lg font-bold"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  Get Started
+                </Link>
+              )}
             </div>
           </div>
-        </Container>
-      </section>
-    </div>
+        )}
+      </div>
+    </nav>
   );
 };
 
